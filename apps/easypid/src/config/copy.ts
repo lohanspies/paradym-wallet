@@ -33,16 +33,46 @@ export const copy = {
       }),
     },
   },
+  DIDX_WALLET: {
+    about: {
+      description: defineMessage({
+        id: 'didxWallet.about.description',
+        message:
+          'This app was created by Animo Solutions as the didx:me identity wallet. All code is available under Apache 2.0.',
+        comment: 'About screen description text for the didx:me wallet',
+      }),
+      emailHeader: defineMessage({
+        id: 'didxWallet.about.emailHeader',
+        message: 'Reach out from didx:me Wallet',
+        comment: 'Email subject when contacting support from didx:me wallet',
+      }),
+    },
+  },
 } satisfies Record<AppType, Record<string, unknown>>
+
+const appNames: Record<AppType, string> = {
+  FUNKE_WALLET: 'Funke Wallet',
+  PARADYM_WALLET: 'Paradym Wallet',
+  DIDX_WALLET: 'didx:me',
+}
+
+export const APP_NAME = appNames[CURRENT_APP_TYPE]
 
 export function useAppCopy() {
   return copy[CURRENT_APP_TYPE]
 }
 
 export function useAppIcon() {
-  const [assets] = useAssets([require('../../assets/funke/icon.png'), require('../../assets/paradym/icon.png')])
+  const [assets] = useAssets([
+    require('../../assets/funke/icon.png'),
+    require('../../assets/paradym/icon.png'),
+    require('../../assets/didx/icon.png'),
+  ])
   if (CURRENT_APP_TYPE === 'FUNKE_WALLET') {
     return assets?.[0]
+  }
+  if (CURRENT_APP_TYPE === 'DIDX_WALLET') {
+    return assets?.[2]
   }
   return assets?.[1]
 }

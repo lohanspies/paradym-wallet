@@ -135,10 +135,10 @@ appId: id.paradym.wallet.preview
 
 - runFlow:
     when:
-      visible: "Go back to Paradym Wallet"
+      visible: "Go back to .*"
     commands:
       - tapOn:
-          text: Go back to Paradym Wallet
+          text: Go back to .*
           index: 1
 
 - extendedWaitUntil:
@@ -159,4 +159,4 @@ appId: id.paradym.wallet.preview
       platform: iOS
     commands:
       - tapOn: "Go to wallet,  "
-- assertVisible: Hello!
+- assertVisible: Welcome back

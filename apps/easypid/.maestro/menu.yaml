@@ -4,16 +4,18 @@ tags:
 ---
 - runFlow: ./issue-none/issue-none-openid4vc.yaml
 
-- tapOn: Recent activity
-- assertVisible: Activity
-- tapOn: .*Card added.*
-- assertVisible: Card added
-- tapOn: .*Issued on.*
-- assertVisible: Card details
-- tapOn: Card is active. No actions required
-- assertVisible: Bottom Sheet
-- tapOn:
-    point: 50%,90%
+# Navigate to Activity tab
+- tapOn: "Activity"
+- assertVisible: "Your credential history"
 
-- tapOn: Card attributes. View attributes of the card
-- assertVisible: Card attributes
+# Navigate to Credentials tab
+- tapOn: "Credentials"
+- assertVisible: "Credentials"
+
+# Navigate to Settings tab
+- tapOn: "Settings"
+- assertVisible: "Self-Custodial Mode"
+
+# Navigate back to Home tab
+- tapOn: "Home"
+- assertVisible: "Welcome back"

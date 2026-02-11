@@ -5,7 +5,7 @@ tags:
 - launchApp:
     clearState: true
 
-- assertVisible: Paradym Wallet
+- assertVisible: .*Wallet|didx:me.*
 - tapOn: Get Started
 
 - assertVisible: Choose a 6-digit PIN
@@ -32,7 +32,7 @@ tags:
 
 # Due to animations, it can take some time before the home screen becomes visible.
 - extendedWaitUntil:
-    visible: "Hello!"
+    visible: "Welcome back"
     timeout: 5000
 
-- assertVisible: "Hello!"
+- assertVisible: "Welcome back"

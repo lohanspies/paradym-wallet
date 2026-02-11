@@ -114,14 +114,18 @@ tags:
       platform: iOS
     commands:
       - tapOn: "Go to wallet,  "
-- assertVisible: "Hello!"
+- assertVisible: "Welcome back"
 
 - takeScreenshot: HomeScreen
 
-- tapOn: Recent activity
+# Navigate to Activity tab and take screenshot
+- tapOn: "Activity"
+- assertVisible: "Your credential history"
 - takeScreenshot: RecentActivity
-- tapOn: " , Back"
-- tapOn: .*All cards.*
+
+# Navigate to Credentials tab, open credential detail
+- tapOn: "Credentials"
+- assertVisible: "Credentials"
 - tapOn: DRIVING LICENCE
 - tapOn: Card attributes. View attributes of the card
 - assertVisible: Card attributes

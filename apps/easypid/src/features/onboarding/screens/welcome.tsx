@@ -1,3 +1,4 @@
+import { APP_NAME } from '@easypid/config/copy'
 import { useLingui } from '@lingui/react/macro'
 import { Blob, Button, FlexPage, Heading, Image, Paragraph, Stack, XStack, YStack } from '@package/ui'
 
@@ -48,7 +49,7 @@ export default function OnboardingWelcome({ goToNextStep }: OnboardingWelcomePro
       <FlexPage fg={1} jc="space-between" backgroundColor="$transparent">
         <Stack h="40%" />
         <YStack gap="$4" ai="center">
-          <Heading fontSize={32}>Paradym Wallet</Heading>
+          <Heading fontSize={32}>{APP_NAME}</Heading>
           <Paragraph px="$2" ta="center">
             {introText}
           </Paragraph>

@@ -74,7 +74,7 @@
 			"name": ["name"]
 		},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 153]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 163]],
 		"translation": "{name} vill ansluta med dig."
 	},
 	"verifyPartySlide.signingSubtitle": {
@@ -83,7 +83,7 @@
 			"name": ["name"]
 		},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 131]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 141]],
 		"translation": "{name} vill interagera för att skapa en digital signatur för ett dokument."
 	},
 	"verifyPartySlide.offerCardSubtitle": {
@@ -92,7 +92,7 @@
 			"name": ["name"]
 		},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 121]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 131]],
 		"translation": "{name} vill erbjuda dig ett kort."
 	},
 	"verifyPartySlide.requestSubtitle": {
@@ -101,7 +101,7 @@
 			"name": ["name"]
 		},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 143]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 153]],
 		"translation": "{name} vill begära information från dig."
 	},
 	"credentials.totalLabel": {
@@ -152,6 +152,13 @@
 		"origin": [["src/features/wallet/FunkeOfflineQrScreen.tsx", 140]],
 		"translation": "En verifierare behöver skanna din QR-kod."
 	},
+	"settings.item.about": {
+		"message": "About didx:me",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/menu/DidxSettingsScreen.tsx", 54]],
+		"translation": "Om didx:me"
+	},
 	"cardAttributes.aboutTheCard": {
 		"message": "About the card",
 		"placeholders": {},
@@ -195,7 +202,7 @@
 		"message": "Activate Biometrics",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/onboarding/onboardingContext.tsx", 660]],
+		"origin": [["src/features/onboarding/onboardingContext.tsx", 662]],
 		"translation": "Aktivera biometri"
 	},
 	"onboarding.biometrics.subtitle": {
@@ -218,7 +225,10 @@
 		"comments": [
 			"Title of the activity screen showing shared or received credentials"
 		],
-		"origin": [["src/features/activity/FunkeActivityScreen.tsx", 22]],
+		"origin": [
+			["src/features/activity/DidxActivityScreen.tsx", 21],
+			["src/features/activity/FunkeActivityScreen.tsx", 22]
+		],
 		"translation": "Aktivitet"
 	},
 	"activity.emptyDescription": {
@@ -360,28 +370,28 @@
 		"message": "An unknown organization wants to connect with you.",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 155]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 165]],
 		"translation": "En okänd organisation vill ansluta med dig."
 	},
 	"verifyPartySlide.signingSubtitleUnknownOrganization": {
 		"message": "An unknown organization wants to interact to create a digital signature for a document.",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 135]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 145]],
 		"translation": "En okänd organisation vill interagera för att skapa en digital signatur för ett dokument."
 	},
 	"verifyPartySlide.offerCardSubtitleUnknownOrganization": {
 		"message": "An unknown organization wants to offer you a card.",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 123]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 133]],
 		"translation": "En okänd organisation vill erbjuda dig ett kort."
 	},
 	"verifyPartySlide.requestSubtitleUnknownOrganization": {
 		"message": "An unknown organization wants to request information from you.",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 145]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 155]],
 		"translation": "En okänd organisation vill begära information från dig."
 	},
 	"menu.section.app": {
@@ -397,14 +407,14 @@
 			"0": ["trustedEntitiesWithoutSelf.length"]
 		},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 174]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 184]],
 		"translation": "Godkänd av {0} organisationer"
 	},
 	"verifyPartySlide.approvedByOneOrganization": {
 		"message": "Approved by one organization",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 179]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 189]],
 		"translation": "Godkänd av en organisation"
 	},
 	"common.archiveCardTitle": {
@@ -664,7 +674,7 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 160]
+			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 170]
 		],
 		"translation": "Kortet är inte redo än"
 	},
@@ -739,7 +749,7 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 183]
+			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 188]
 		],
 		"translation": "Kort har lagts till i din plånbok!"
 	},
@@ -920,6 +930,13 @@
 		"origin": [["../../packages/translations/src/commonMessages.ts", 456]],
 		"translation": "Korttyp"
 	},
+	"didx.credentials.title": {
+		"message": "Credentials",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxCredentialsScreen.tsx", 74]],
+		"translation": "Intyg"
+	},
 	"credentials.emptyDescription": {
 		"message": "Credentials will appear here once you receive them.",
 		"placeholders": {},
@@ -991,7 +1008,7 @@
 		"message": "Demo organization",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 201]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 211]],
 		"translation": "Demoorganisation"
 	},
 	"settings.developmentMode": {
@@ -1014,7 +1031,7 @@
 		"message": "Do not share real data",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 205]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 215]],
 		"translation": "Dela inte riktig data"
 	},
 	"signShare.documentHeading": {
@@ -1079,18 +1096,18 @@
 		],
 		"translation": "eID-kort"
 	},
+	"onboarding.eidScanningCancelled": {
+		"message": "eID card scanning cancelled",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/onboarding/onboardingContext.tsx", 480]],
+		"translation": "Skanning av eID-kort avbruten"
+	},
 	"pidSetup.eidScanningCancelled": {
 		"message": "eID card scanning cancelled",
 		"placeholders": {},
 		"comments": [],
 		"origin": [["src/features/pid/FunkePidSetupScreen.tsx", 270]],
-		"translation": "Skanning av eID-kort avbruten"
-	},
-	"onboarding.eidScanningCancelled": {
-		"message": "eID card scanning cancelled",
-		"placeholders": {},
-		"comments": [],
-		"origin": [["src/features/onboarding/onboardingContext.tsx", 478]],
 		"translation": "Skanning av eID-kort avbruten"
 	},
 	"language.en": {
@@ -1178,7 +1195,7 @@
 		"message": "Error occurred during onboarding",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/onboarding/onboardingContext.tsx", 422]],
+		"origin": [["src/features/onboarding/onboardingContext.tsx", 424]],
 		"translation": "Fel uppstod under inställningen"
 	},
 	"notification.errorParsingInvitation": {
@@ -1277,6 +1294,13 @@
 		"origin": [["src/features/menu/FunkeMenuScreen.tsx", 159]],
 		"translation": "Feedback"
 	},
+	"settings.item.feedback": {
+		"message": "Feedback",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/menu/DidxSettingsScreen.tsx", 50]],
+		"translation": "Feedback"
+	},
 	"loadingRequestSlide.description": {
 		"message": "Fetching information",
 		"placeholders": {},
@@ -1295,7 +1319,7 @@
 		"message": "First time interaction",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 219]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 229]],
 		"translation": "Första interaktionen"
 	},
 	"funkeAboutScreen.contactIntro": {
@@ -1316,7 +1340,7 @@
 		"message": "Get Started",
 		"placeholders": {},
 		"comments": ["Button label to begin onboarding from the welcome screen"],
-		"origin": [["src/features/onboarding/screens/welcome.tsx", 17]],
+		"origin": [["src/features/onboarding/screens/welcome.tsx", 18]],
 		"translation": "Kom igång"
 	},
 	"onboardingWalletExplanation.getStarted": {
@@ -1500,7 +1524,7 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/FunkeOpenIdCredentialNotificationScreen.tsx", 543]
+			["src/features/receive/FunkeOpenIdCredentialNotificationScreen.tsx", 550]
 		],
 		"translation": "Om du stoppar kommer intygserbjudandet att avbrytas."
 	},
@@ -1556,7 +1580,7 @@
 			"name": ["name"]
 		},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 113]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 123]],
 		"translation": "Interagera med {name}?"
 	},
 	"pidSetup.invalidEidPin": {
@@ -1584,7 +1608,7 @@
 		"message": "Invalid PIN entered for eID Card. Please try again",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/onboarding/onboardingContext.tsx", 335]],
+		"origin": [["src/features/onboarding/onboardingContext.tsx", 337]],
 		"translation": "Felaktig PIN-kod angiven för eID-kort. Försök igen"
 	},
 	"qrScan.invalidQrCode": {
@@ -1631,7 +1655,7 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 164]
+			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 174]
 		],
 		"translation": "Är informationen korrekt?"
 	},
@@ -1717,7 +1741,7 @@
 			"0": ["formatRelativeDate(new Date(lastInteractionDate))"]
 		},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 226]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 236]],
 		"translation": "Senaste interaktion: {0}"
 	},
 	"predicate.lessThan": {
@@ -1844,6 +1868,13 @@
 		"origin": [["src/features/wallet/components/LatestActivityCard.tsx", 16]],
 		"translation": "Ingen aktivitet ännu"
 	},
+	"activity.empty": {
+		"message": "No activity yet",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/activity/DidxActivityScreen.tsx", 42]],
+		"translation": "Ingen aktivitet än"
+	},
 	"credentials.noAttributes": {
 		"message": "No attributes found",
 		"placeholders": {},
@@ -1871,6 +1902,13 @@
 		"origin": [["src/features/wallet/components/AllCardsCard.tsx", 34]],
 		"translation": "Inga kort ännu"
 	},
+	"credentials.emptyCategory": {
+		"message": "No credentials in this category",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxCredentialsScreen.tsx", 114]],
+		"translation": "Inga intyg i den här kategorin"
+	},
 	"presentation.noCredentialsSelected": {
 		"message": "No credentials selected",
 		"placeholders": {},
@@ -1888,6 +1926,20 @@
 		"comments": ["Shown when sharing failed and no credentials were shared"],
 		"origin": [["src/features/activity/FunkeActivityDetailScreen.tsx", 226]],
 		"translation": "Inga kort delades."
+	},
+	"credentials.emptyAll": {
+		"message": "No credentials yet",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxCredentialsScreen.tsx", 112]],
+		"translation": "Inga intyg än"
+	},
+	"home.emptyState": {
+		"message": "No credentials yet. Scan a QR code to get started.",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 147]],
+		"translation": "Inga intyg än. Skanna en QR-kod för att komma igång."
 	},
 	"submission.fallbackPurpose": {
 		"message": "No information was provided on the purpose of the data request. Be cautious",
@@ -1936,7 +1988,7 @@
 		"message": "No previous interactions found",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 230]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 240]],
 		"translation": "Inga tidigare interaktioner hittades"
 	},
 	"pidSetup.notReadyToReceivePid": {
@@ -1991,14 +2043,14 @@
 		"message": "Organization is not verified",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 191]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 201]],
 		"translation": "Organisationen är inte verifierad"
 	},
 	"verifyPartySlide.organizationNotVerifiedHeading": {
 		"message": "Organization not verified",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 115]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 125]],
 		"translation": "Organisation ej verifierad"
 	},
 	"requestPurpose.infoSheet.title": {
@@ -2153,6 +2205,13 @@
 		"origin": [["../../packages/translations/src/commonMessages.ts", 396]],
 		"translation": "Postnummer"
 	},
+	"home.present": {
+		"message": "Present",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 76]],
+		"translation": "Visa upp"
+	},
 	"home.presentInPersonButton": {
 		"message": "Present In-person",
 		"placeholders": {},
@@ -2182,7 +2241,7 @@
 		"message": "Previous interactions",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 215]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 225]],
 		"translation": "Tidigare interaktioner"
 	},
 	"funkeAboutScreen.privacyPolicyTitle": {
@@ -2212,6 +2271,13 @@
 		"comments": ["Heading above the stated purpose of the data request"],
 		"origin": [["src/features/share/components/RequestPurposeSection.tsx", 44]],
 		"translation": "SYFTE"
+	},
+	"didxWallet.about.emailHeader": {
+		"message": "Reach out from didx:me Wallet",
+		"placeholders": {},
+		"comments": ["Email subject when contacting support from didx:me wallet"],
+		"origin": [["src/config/copy.ts", 44]],
+		"translation": "Kontakta oss från didx:me Wallet"
 	},
 	"funkeWallet.about.emailHeader": {
 		"message": "Reach out from Funke EUDI Wallet",
@@ -2284,11 +2350,25 @@
 		"origin": [["src/features/wallet/components/LatestActivityCard.tsx", 10]],
 		"translation": "Senaste aktivitet"
 	},
+	"home.recentActivity": {
+		"message": "Recent Activity",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 86]],
+		"translation": "Senaste aktivitet"
+	},
+	"home.recentCredentials": {
+		"message": "Recent Credentials",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 116]],
+		"translation": "Senaste intyg"
+	},
 	"verifyPartySlide.recognizedOrganizationTitle": {
 		"message": "Recognized organization",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 168]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 178]],
 		"translation": "Erkänd organisation"
 	},
 	"cardLifecycle.refreshCardButton": {
@@ -2404,6 +2484,13 @@
 		],
 		"translation": "Skanning misslyckades"
 	},
+	"home.scanQr": {
+		"message": "Scan QR",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 59]],
+		"translation": "Skanna QR"
+	},
 	"home.scanQrButton": {
 		"message": "Scan QR-code",
 		"placeholders": {},
@@ -2464,6 +2551,13 @@
 		"origin": [["src/features/onboarding/screens/introduction-steps.tsx", 24]],
 		"translation": "Säkra plånboken"
 	},
+	"settings.selfCustodial.title": {
+		"message": "Self-Custodial Mode",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/menu/DidxSettingsScreen.tsx", 90]],
+		"translation": "Självförvaringsläge"
+	},
 	"pinSlide.title": {
 		"message": "Send data with your PIN code",
 		"placeholders": {},
@@ -2494,6 +2588,16 @@
 		"origin": [["src/features/onboarding/steps.ts", 43]],
 		"translation": "Ställ in din plånbok"
 	},
+	"settings.title": {
+		"message": "Settings",
+		"placeholders": {},
+		"comments": ["Header title for the settings screen"],
+		"origin": [
+			["src/features/menu/DidxSettingsScreen.tsx", 63],
+			["src/features/menu/FunkeSettingsScreen.tsx", 155]
+		],
+		"translation": "Inställningar"
+	},
 	"menu.item.settings": {
 		"message": "Settings",
 		"placeholders": {},
@@ -2501,11 +2605,11 @@
 		"origin": [["src/features/menu/FunkeMenuScreen.tsx", 150]],
 		"translation": "Inställningar"
 	},
-	"settings.title": {
+	"settings.item.settings": {
 		"message": "Settings",
 		"placeholders": {},
-		"comments": ["Header title for the settings screen"],
-		"origin": [["src/features/menu/FunkeSettingsScreen.tsx", 155]],
+		"comments": [],
+		"origin": [["src/features/menu/DidxSettingsScreen.tsx", 46]],
 		"translation": "Inställningar"
 	},
 	"menu.setupEid.title": {
@@ -2773,7 +2877,7 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/FunkeOpenIdCredentialNotificationScreen.tsx", 539]
+			["src/features/receive/FunkeOpenIdCredentialNotificationScreen.tsx", 546]
 		],
 		"translation": "Stoppa intygserbjudande?"
 	},
@@ -2826,7 +2930,7 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 154]
+			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 164]
 		],
 		"translation": "Klart!"
 	},
@@ -2860,7 +2964,7 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 179]
+			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 194]
 		],
 		"translation": "Kortet hämtas så snart det är tillgängligt."
 	},
@@ -3013,6 +3117,13 @@
 		],
 		"translation": "Detta korts giltighetsperiod är från {0} till {1}."
 	},
+	"home.defaultName": {
+		"message": "there",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 39]],
+		"translation": "där"
+	},
 	"trust.noApprovals": {
 		"message": "There are no organizations that have approved {name}.",
 		"placeholders": {
@@ -3088,6 +3199,13 @@
 		"origin": [["src/config/copy.ts", 23]],
 		"translation": "Denna app skapades av Animo Solutions som en kompletterande app för Paradym. All kod är tillgänglig under Apache 2.0."
 	},
+	"didxWallet.about.description": {
+		"message": "This app was created by Animo Solutions as the didx:me identity wallet. All code is available under Apache 2.0.",
+		"placeholders": {},
+		"comments": ["About screen description text for the didx:me wallet"],
+		"origin": [["src/config/copy.ts", 38]],
+		"translation": "Den här appen har skapats av Animo Solutions som didx:me-identitetsplånboken. All kod finns tillgänglig under Apache 2.0."
+	},
 	"funkeWallet.about.description": {
 		"message": "This app was created by Animo Solutions in the context of the SPRIN-D Funke ‘EUDI Wallet Prototypes’. It serves as a prototype for future wallet providers. All code is available under Apache 2.0.",
 		"placeholders": {},
@@ -3151,7 +3269,7 @@
 		"message": "This is your digital wallet. With it, you can store and share information about yourself.",
 		"placeholders": {},
 		"comments": ["Intro paragraph on the welcome screen"],
-		"origin": [["src/features/onboarding/screens/welcome.tsx", 11]],
+		"origin": [["src/features/onboarding/screens/welcome.tsx", 12]],
 		"translation": "Det här är din digitala plånbok. Med den kan du lagra och dela information om dig själv."
 	},
 	"onboardingWalletExplanation.slide1.title": {
@@ -3408,6 +3526,20 @@
 		"origin": [["src/features/receive/slides/AuthCodeFlowSlide.tsx", 131]],
 		"translation": "Verifiera ditt konto"
 	},
+	"home.viewAll": {
+		"message": "View All",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 97]],
+		"translation": "Visa alla"
+	},
+	"home.viewAll2": {
+		"message": "View All",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 127]],
+		"translation": "Visa alla"
+	},
 	"credentials.cardAttributesDescription": {
 		"message": "View attributes of the card",
 		"placeholders": {},
@@ -3442,6 +3574,13 @@
 		"comments": [],
 		"origin": [["src/utils/sharedPidSetup.ts", 63]],
 		"translation": "Vi behöver din biometri för att verifiera din identitet."
+	},
+	"home.welcomeBack": {
+		"message": "Welcome back",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 36]],
+		"translation": "Välkommen tillbaka"
 	},
 	"welcome.titleToYourWallet": {
 		"message": "Welcome to your wallet",
@@ -3685,9 +3824,16 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 229]
+			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 243]
 		],
 		"translation": "Dina kort är inte klara ännu. Vi kollar med jämna mellanrum i bakgrunden och hämtar dem så snart de är redo."
+	},
+	"activity.subtitle": {
+		"message": "Your credential history",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/activity/DidxActivityScreen.tsx", 24]],
+		"translation": "Din intyghistorik"
 	},
 	"cardLifecycle.active.sheetDescription": {
 		"message": "Your credentials may expire or require an active internet connection to validate.",
@@ -3725,6 +3871,13 @@
 		"comments": ["Shown after credentials are shared (no verifier name)"],
 		"origin": [["src/features/share/slides/PresentationSuccessSlide.tsx", 86]],
 		"translation": "Din information har delats."
+	},
+	"settings.selfCustodial.description": {
+		"message": "Your keys, your credentials, your data",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/menu/DidxSettingsScreen.tsx", 93]],
+		"translation": "Dina nycklar, dina intyg, din data"
 	},
 	"authenticate.pinRequiredToast": {
 		"message": "Your PIN is required to unlock the app",

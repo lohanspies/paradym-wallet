@@ -11,6 +11,12 @@ export const APP_CONFIGS = {
     DIDCOMM: true,
     CLOUD_HSM: false,
   },
+  DIDX_WALLET: {
+    EID_CARD: false,
+    AI_ANALYSIS: false,
+    DIDCOMM: true,
+    CLOUD_HSM: false,
+  },
 } satisfies Record<string, Features>
 
 export interface Features {

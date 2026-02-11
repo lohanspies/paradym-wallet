@@ -37,6 +37,7 @@ import {
   FingerPrintIcon,
   GlobeAltIcon,
   HandRaisedIcon,
+  HomeIcon,
   IdentificationIcon,
   InformationCircleIcon,
   KeyIcon,
@@ -45,6 +46,7 @@ import {
   LockClosedIcon,
   MagnifyingGlassIcon,
   NoSymbolIcon,
+  PaperAirplaneIcon,
   PencilIcon,
   PlusIcon,
   QrCodeIcon,
@@ -77,6 +79,7 @@ import {
   EyeIcon as EyeFilledIcon,
   EyeSlashIcon as EyeSlashFilledIcon,
   HandRaisedIcon as HandRaisedFilledIcon,
+  HomeIcon as HomeFilledIcon,
   IdentificationIcon as IdentificationFilledIcon,
   InformationCircleIcon as InformationCircleFilledIcon,
   LockClosedIcon as LockClosedFilledIcon,
@@ -198,6 +201,10 @@ export const HeroIcons = {
   ArrowUpRightFilled: wrapHeroIcon(ArrowUpRightFilledIcon),
   PenFilled: wrapHeroIcon(PencilFilledIcon),
   Pen: wrapHeroIcon(PencilIcon),
+  Home: wrapHeroIcon(HomeIcon),
+  HomeFilled: wrapHeroIcon(HomeFilledIcon),
+  Clock: wrapHeroIcon(ClockFilledIcon),
+  PaperAirplane: wrapHeroIcon(PaperAirplaneIcon),
 } as const
 
 export const CustomIcons = {
