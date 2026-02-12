@@ -1,9 +1,16 @@
+import { CURRENT_APP_TYPE } from '@easypid/config/appType'
 import { useAppCopy } from '@easypid/config/copy'
 import { useLingui } from '@lingui/react/macro'
 import { TextBackButton } from '@package/app'
 import { FlexPage, HeaderContainer, InfoButton, Paragraph, YStack } from '@package/ui'
 import * as Application from 'expo-application'
 import { Linking } from 'react-native'
+
+const privacyPolicyUrls: Record<string, string> = {
+  FUNKE_WALLET: 'https://paradym.id/wallet-privacy-policy',
+  PARADYM_WALLET: 'https://paradym.id/wallet-privacy-policy',
+  DIDX_WALLET: 'https://didx.me/privacy-policy',
+}
 
 export function FunkeAboutScreen() {
   const { t } = useLingui()
@@ -14,7 +21,7 @@ export function FunkeAboutScreen() {
   }
 
   const openPrivacyPolicy = () => {
-    Linking.openURL('https://paradym.id/wallet-privacy-policy')
+    Linking.openURL(privacyPolicyUrls[CURRENT_APP_TYPE] ?? 'https://paradym.id/wallet-privacy-policy')
   }
 
   return (

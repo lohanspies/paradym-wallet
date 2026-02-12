@@ -1,4 +1,5 @@
 import { isLocalSecureEnvironmentSupported } from '@animo-id/expo-secure-environment'
+import { CURRENT_APP_TYPE } from '@easypid/config/appType'
 import { useFeatureFlag } from '@easypid/hooks/useFeatureFlag'
 import { useLingui } from '@lingui/react/macro'
 import { useImageScaler } from '@package/app/hooks'
@@ -62,8 +63,14 @@ export function OnboardingDataProtection({ goToNextStep }: OnboardingDataProtect
     setShouldUseCloudHsm(newShouldUseCloudHsm)
   }
 
+  const privacyPolicyUrls: Record<string, string> = {
+    FUNKE_WALLET: 'https://paradym.id/wallet-privacy-policy',
+    PARADYM_WALLET: 'https://paradym.id/wallet-privacy-policy',
+    DIDX_WALLET: 'https://didx.me/privacy-policy',
+  }
+
   const onPressPrivacy = () => {
-    Linking.openURL('https://paradym.id/wallet-privacy-policy')
+    Linking.openURL(privacyPolicyUrls[CURRENT_APP_TYPE] ?? 'https://paradym.id/wallet-privacy-policy')
   }
 
   return (

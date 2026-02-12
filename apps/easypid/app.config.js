@@ -46,6 +46,26 @@ const APP_CONFIGS = {
       redirectBaseUrl: 'https://paradym.id/invitation/redirect',
     },
   }),
+
+  DIDX_WALLET: createBaseConfig({
+    name: 'didx:me',
+    scheme: 'id.didx.wallet',
+    icon: './assets/didx/icon.png',
+    adaptiveIcon: './assets/didx/adaptive_icon.png',
+    splash: './assets/didx/splash.png',
+    splashIcon: './assets/didx/splash_icon.png',
+    slug: 'didx-wallet',
+    version,
+    bundleId: 'id.didx.wallet',
+    additionalInvitationSchemes: ['didcomm'],
+    associatedDomains: ['didx.id'],
+    projectId: 'b5f457fa-bcab-4c6e-8092-8cdf1239027a',
+    assets: ['./assets/didx/icon.png'],
+    enableAusweisSdkEntitlementsIos: false,
+    extraConfig: {
+      mediatorDid: mediatorDids[process.env.APP_VARIANT || 'production'],
+    },
+  }),
 }
 
 // Add Funke specific configurations

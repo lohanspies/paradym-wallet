@@ -21,6 +21,7 @@
 		"@animo-id/expo-secure-environment": "catalog:",
 		"@animo-id/mdoc": "catalog:",
 		"@credo-ts/core": "catalog:",
+		"@expo-google-fonts/dm-sans": "catalog:",
 		"@expo-google-fonts/open-sans": "catalog:",
 		"@expo-google-fonts/raleway": "catalog:",
 		"@gorhom/bottom-sheet": "catalog:",

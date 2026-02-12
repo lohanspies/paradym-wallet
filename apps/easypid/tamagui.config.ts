@@ -1,4 +1,4 @@
-import { configInput, fontOpenSans, fontRaleway, hexColors } from '@package/ui/config/tamagui.config'
+import { configInput, fontDmSans, hexColors } from '@package/ui/config/tamagui.config'
 import { radius, size, space, zIndex } from '@tamagui/themes'
 import { createTamagui, createTokens } from 'tamagui'
 
@@ -21,32 +21,50 @@ const tokens = createTokens({
   },
   color: {
     ...hexColors, // Re-use existing colors for positive/warnings etc.
-    background: hexColors.white,
-    'grey-50': '#F5F7F8',
-    'grey-100': '#EBF1F3',
-    'grey-200': '#E5E9EC',
-    'grey-300': '#D7DCE0',
-    'grey-400': '#BFC5CB',
-    'grey-500': '#839196',
-    'grey-600': '#6D7581',
-    'grey-700': '#656974',
-    'grey-800': '#464B56',
-    'grey-900': '#222222',
-    'primary-50': '#F7F7FF',
-    'primary-100': '#EEF0FE',
-    'primary-200': '#DADEFF',
-    'primary-300': '#ACB4FB',
-    'primary-400': '#7A88FF',
-    'primary-500': '#5A33F6',
-    'primary-600': '#2233C9',
-    'primary-700': '#202EA7',
-    'primary-800': '#141E80',
-    'primary-900': '#131C66',
-    'feature-300': '#DFA6FF',
-    'feature-400': '#CA79FF',
-    'feature-500': '#A000F8',
-    'feature-600': '#8600D1',
-    'feature-700': '#7E00CC',
+    background: '#F3F2F0',
+
+    // didx:me neutral/brown scale
+    'grey-50': '#F3F2F0',
+    'grey-100': '#DEDDD9',
+    'grey-200': '#C5BCB7',
+    'grey-300': '#82736E',
+    'grey-400': '#564440',
+    'grey-500': '#38231E',
+    'grey-600': '#565251',
+    'grey-700': '#38231E',
+    'grey-800': '#1D1C1A',
+    'grey-900': '#111111',
+
+    // didx:me primary (orange)
+    'primary-50': '#FCDFD1',
+    'primary-100': '#FCDFD1',
+    'primary-200': '#FCC1A3',
+    'primary-300': '#FC9C6C',
+    'primary-400': '#F6724B',
+    'primary-500': '#F14C2E',
+    'primary-600': '#F14C2E',
+    'primary-700': '#B92D0C',
+    'primary-800': '#F14C2E',
+    'primary-900': '#B92D0C',
+
+    // didx:me accent (purple)
+    'accent-50': '#E7C2F8',
+    'accent-100': '#E7C2F8',
+    'accent-200': '#AC79C4',
+    'accent-300': '#662A84',
+    'accent-400': '#441774',
+    'accent-500': '#2D0F65',
+    'accent-600': '#2D0F65',
+    'accent-700': '#2D0F65',
+    'accent-800': '#2D0F65',
+    'accent-900': '#2D0F65',
+
+    // Keep feature colors mapped to purple accent for backward compat
+    'feature-300': '#E7C2F8',
+    'feature-400': '#AC79C4',
+    'feature-500': '#662A84',
+    'feature-600': '#441774',
+    'feature-700': '#2D0F65',
   },
 })
 
@@ -54,10 +72,9 @@ const config = createTamagui({
   ...configInput,
   tokens,
   fonts: {
-    default: fontOpenSans,
-    heading: fontRaleway,
-    // Somehow adding body font gives build errors?!
-    body: fontOpenSans,
+    default: fontDmSans,
+    heading: fontDmSans,
+    body: fontDmSans,
   },
   themes: {
     light: {

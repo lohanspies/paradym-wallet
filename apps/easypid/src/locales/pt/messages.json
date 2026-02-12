@@ -74,7 +74,7 @@
 			"name": ["name"]
 		},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 153]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 163]],
 		"translation": "{name} quer se conectar contigo."
 	},
 	"verifyPartySlide.signingSubtitle": {
@@ -83,7 +83,7 @@
 			"name": ["name"]
 		},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 131]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 141]],
 		"translation": "{name} quer interagir para criar uma assinatura digital para um documento."
 	},
 	"verifyPartySlide.offerCardSubtitle": {
@@ -92,7 +92,7 @@
 			"name": ["name"]
 		},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 121]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 131]],
 		"translation": "{name} quer-lhe oferecer um cartão."
 	},
 	"verifyPartySlide.requestSubtitle": {
@@ -101,7 +101,7 @@
 			"name": ["name"]
 		},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 143]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 153]],
 		"translation": "{name} deseja solicitar informações suas."
 	},
 	"credentials.totalLabel": {
@@ -152,6 +152,13 @@
 		"origin": [["src/features/wallet/FunkeOfflineQrScreen.tsx", 140]],
 		"translation": "Um verificador precisa ler o seu código QR."
 	},
+	"settings.item.about": {
+		"message": "About didx:me",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/menu/DidxSettingsScreen.tsx", 54]],
+		"translation": "Acerca de didx:me"
+	},
 	"cardAttributes.aboutTheCard": {
 		"message": "About the card",
 		"placeholders": {},
@@ -165,7 +172,7 @@
 		"message": "About the wallet",
 		"placeholders": {},
 		"comments": ["Screen header shown on the about page of the wallet"],
-		"origin": [["src/features/menu/FunkeAboutScreen.tsx", 23]],
+		"origin": [["src/features/menu/FunkeAboutScreen.tsx", 30]],
 		"translation": "Sobre a carteira"
 	},
 	"trust.headerTitle": {
@@ -195,7 +202,7 @@
 		"message": "Activate Biometrics",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/onboarding/onboardingContext.tsx", 660]],
+		"origin": [["src/features/onboarding/onboardingContext.tsx", 662]],
 		"translation": "Ativar biometria"
 	},
 	"onboarding.biometrics.subtitle": {
@@ -218,7 +225,10 @@
 		"comments": [
 			"Title of the activity screen showing shared or received credentials"
 		],
-		"origin": [["src/features/activity/FunkeActivityScreen.tsx", 22]],
+		"origin": [
+			["src/features/activity/DidxActivityScreen.tsx", 21],
+			["src/features/activity/FunkeActivityScreen.tsx", 22]
+		],
 		"translation": "Atividade"
 	},
 	"activity.emptyDescription": {
@@ -360,28 +370,28 @@
 		"message": "An unknown organization wants to connect with you.",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 155]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 165]],
 		"translation": "Uma organização desconhecida quer se conectar contigo."
 	},
 	"verifyPartySlide.signingSubtitleUnknownOrganization": {
 		"message": "An unknown organization wants to interact to create a digital signature for a document.",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 135]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 145]],
 		"translation": "Uma organização desconhecida quer interagir para criar uma assinatura digital para um documento."
 	},
 	"verifyPartySlide.offerCardSubtitleUnknownOrganization": {
 		"message": "An unknown organization wants to offer you a card.",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 123]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 133]],
 		"translation": "Uma organização desconhecida quer-lhe oferecer um cartão."
 	},
 	"verifyPartySlide.requestSubtitleUnknownOrganization": {
 		"message": "An unknown organization wants to request information from you.",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 145]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 155]],
 		"translation": "Uma organização desconhecida quer solicitar informações."
 	},
 	"menu.section.app": {
@@ -397,14 +407,14 @@
 			"0": ["trustedEntitiesWithoutSelf.length"]
 		},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 174]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 184]],
 		"translation": "Aprovado por {0} organizações"
 	},
 	"verifyPartySlide.approvedByOneOrganization": {
 		"message": "Approved by one organization",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 179]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 189]],
 		"translation": "Aprovado por uma organização"
 	},
 	"common.archiveCardTitle": {
@@ -664,7 +674,7 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 160]
+			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 170]
 		],
 		"translation": "O cartão ainda não está pronto"
 	},
@@ -739,7 +749,7 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 183]
+			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 188]
 		],
 		"translation": "Cartão adicionado com sucesso à a sua carteira!"
 	},
@@ -920,6 +930,13 @@
 		"origin": [["../../packages/translations/src/commonMessages.ts", 456]],
 		"translation": "Tipo de credencial"
 	},
+	"didx.credentials.title": {
+		"message": "Credentials",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxCredentialsScreen.tsx", 74]],
+		"translation": "Credenciais"
+	},
 	"credentials.emptyDescription": {
 		"message": "Credentials will appear here once you receive them.",
 		"placeholders": {},
@@ -991,7 +1008,7 @@
 		"message": "Demo organization",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 201]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 211]],
 		"translation": "Organização demo"
 	},
 	"settings.developmentMode": {
@@ -1014,7 +1031,7 @@
 		"message": "Do not share real data",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 205]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 215]],
 		"translation": "Não partilhe dados reais"
 	},
 	"signShare.documentHeading": {
@@ -1090,7 +1107,7 @@
 		"message": "eID card scanning cancelled",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/onboarding/onboardingContext.tsx", 478]],
+		"origin": [["src/features/onboarding/onboardingContext.tsx", 480]],
 		"translation": "Leitura do cartão eID cancelado"
 	},
 	"language.en": {
@@ -1178,7 +1195,7 @@
 		"message": "Error occurred during onboarding",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/onboarding/onboardingContext.tsx", 422]],
+		"origin": [["src/features/onboarding/onboardingContext.tsx", 424]],
 		"translation": "Ocorreu um erro durante a integração"
 	},
 	"notification.errorParsingInvitation": {
@@ -1277,6 +1294,13 @@
 		"origin": [["src/features/menu/FunkeMenuScreen.tsx", 159]],
 		"translation": "Feedback"
 	},
+	"settings.item.feedback": {
+		"message": "Feedback",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/menu/DidxSettingsScreen.tsx", 50]],
+		"translation": "Comentários"
+	},
 	"loadingRequestSlide.description": {
 		"message": "Fetching information",
 		"placeholders": {},
@@ -1295,14 +1319,14 @@
 		"message": "First time interaction",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 219]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 229]],
 		"translation": "Primeira interação"
 	},
 	"funkeAboutScreen.contactIntro": {
 		"message": "For more information, reach out to",
 		"placeholders": {},
 		"comments": ["Intro sentence before showing support email address"],
-		"origin": [["src/features/menu/FunkeAboutScreen.tsx", 33]],
+		"origin": [["src/features/menu/FunkeAboutScreen.tsx", 40]],
 		"translation": "Para mais informações, entre em contato com"
 	},
 	"language.de": {
@@ -1316,7 +1340,7 @@
 		"message": "Get Started",
 		"placeholders": {},
 		"comments": ["Button label to begin onboarding from the welcome screen"],
-		"origin": [["src/features/onboarding/screens/welcome.tsx", 17]],
+		"origin": [["src/features/onboarding/screens/welcome.tsx", 18]],
 		"translation": "Começar"
 	},
 	"onboardingWalletExplanation.getStarted": {
@@ -1500,7 +1524,7 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/FunkeOpenIdCredentialNotificationScreen.tsx", 543]
+			["src/features/receive/FunkeOpenIdCredentialNotificationScreen.tsx", 550]
 		],
 		"translation": "Se parar, a oferta do cartão será cancelada."
 	},
@@ -1556,7 +1580,7 @@
 			"name": ["name"]
 		},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 113]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 123]],
 		"translation": "Interagir com {name}?"
 	},
 	"pidSetup.invalidEidPin": {
@@ -1584,7 +1608,7 @@
 		"message": "Invalid PIN entered for eID Card. Please try again",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/onboarding/onboardingContext.tsx", 335]],
+		"origin": [["src/features/onboarding/onboardingContext.tsx", 337]],
 		"translation": "PIN inválido digitado para o cartão eID. Por favor, tente novamente"
 	},
 	"qrScan.invalidQrCode": {
@@ -1631,7 +1655,7 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 164]
+			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 174]
 		],
 		"translation": "As informações estão corretas?"
 	},
@@ -1717,7 +1741,7 @@
 			"0": ["formatRelativeDate(new Date(lastInteractionDate))"]
 		},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 226]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 236]],
 		"translation": "Última interação: {0}"
 	},
 	"predicate.lessThan": {
@@ -1844,6 +1868,13 @@
 		"origin": [["src/features/wallet/components/LatestActivityCard.tsx", 16]],
 		"translation": "Ainda sem atividade"
 	},
+	"activity.empty": {
+		"message": "No activity yet",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/activity/DidxActivityScreen.tsx", 42]],
+		"translation": "Ainda não há atividade"
+	},
 	"credentials.noAttributes": {
 		"message": "No attributes found",
 		"placeholders": {},
@@ -1871,6 +1902,13 @@
 		"origin": [["src/features/wallet/components/AllCardsCard.tsx", 34]],
 		"translation": "Ainda sem cartões"
 	},
+	"credentials.emptyCategory": {
+		"message": "No credentials in this category",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxCredentialsScreen.tsx", 114]],
+		"translation": "Não há credenciais nesta categoria"
+	},
 	"presentation.noCredentialsSelected": {
 		"message": "No credentials selected",
 		"placeholders": {},
@@ -1888,6 +1926,20 @@
 		"comments": ["Shown when sharing failed and no credentials were shared"],
 		"origin": [["src/features/activity/FunkeActivityDetailScreen.tsx", 226]],
 		"translation": "Nenhuma credencial foi partilhada."
+	},
+	"credentials.emptyAll": {
+		"message": "No credentials yet",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxCredentialsScreen.tsx", 112]],
+		"translation": "Ainda não há credenciais"
+	},
+	"home.emptyState": {
+		"message": "No credentials yet. Scan a QR code to get started.",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 147]],
+		"translation": "Ainda não há credenciais. Leia um código QR para começar."
 	},
 	"submission.fallbackPurpose": {
 		"message": "No information was provided on the purpose of the data request. Be cautious",
@@ -1936,7 +1988,7 @@
 		"message": "No previous interactions found",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 230]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 240]],
 		"translation": "Nenhuma interação anterior encontrada"
 	},
 	"pidSetup.notReadyToReceivePid": {
@@ -1954,14 +2006,14 @@
 		"comments": [
 			"Toast shown when switching to local secure storage (e.g. Secure Enclave or Strongbox)"
 		],
-		"origin": [["src/features/onboarding/screens/data-protection.tsx", 30]],
+		"origin": [["src/features/onboarding/screens/data-protection.tsx", 31]],
 		"translation": "Agora usando {0} para chaves criptográficas PID."
 	},
 	"onboardingDataProtection.toast.cloudHsm": {
 		"message": "Now using Cloud HSM for PID cryptographic keys.",
 		"placeholders": {},
 		"comments": ["Toast shown when Cloud HSM is selected for key storage"],
-		"origin": [["src/features/onboarding/screens/data-protection.tsx", 24]],
+		"origin": [["src/features/onboarding/screens/data-protection.tsx", 25]],
 		"translation": "Agora usando Cloud HSM para chaves criptográficas PID."
 	},
 	"network.onlineAgain": {
@@ -1984,21 +2036,21 @@
 		"message": "Open the privacy policy",
 		"placeholders": {},
 		"comments": ["Description under the privacy policy button"],
-		"origin": [["src/features/menu/FunkeAboutScreen.tsx", 52]],
+		"origin": [["src/features/menu/FunkeAboutScreen.tsx", 59]],
 		"translation": "Abrir a política de privacidade"
 	},
 	"verifyPartySlide.unknownOrganizationDescription": {
 		"message": "Organization is not verified",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 191]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 201]],
 		"translation": "A organização não está verificada"
 	},
 	"verifyPartySlide.organizationNotVerifiedHeading": {
 		"message": "Organization not verified",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 115]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 125]],
 		"translation": "Organização não verificada"
 	},
 	"requestPurpose.infoSheet.title": {
@@ -2153,6 +2205,13 @@
 		"origin": [["../../packages/translations/src/commonMessages.ts", 396]],
 		"translation": "Código postal"
 	},
+	"home.present": {
+		"message": "Present",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 76]],
+		"translation": "Apresentar"
+	},
 	"home.presentInPersonButton": {
 		"message": "Present In-person",
 		"placeholders": {},
@@ -2182,14 +2241,14 @@
 		"message": "Previous interactions",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 215]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 225]],
 		"translation": "Interações anteriores"
 	},
 	"funkeAboutScreen.privacyPolicyTitle": {
 		"message": "Privacy Policy",
 		"placeholders": {},
 		"comments": ["Label for button that opens the privacy policy"],
-		"origin": [["src/features/menu/FunkeAboutScreen.tsx", 47]],
+		"origin": [["src/features/menu/FunkeAboutScreen.tsx", 54]],
 		"translation": "Política de Privacidade"
 	},
 	"funkeMdoc.proof.declined": {
@@ -2213,6 +2272,13 @@
 		"origin": [["src/features/share/components/RequestPurposeSection.tsx", 44]],
 		"translation": "PROPÓSITO"
 	},
+	"didxWallet.about.emailHeader": {
+		"message": "Reach out from didx:me Wallet",
+		"placeholders": {},
+		"comments": ["Email subject when contacting support from didx:me wallet"],
+		"origin": [["src/config/copy.ts", 44]],
+		"translation": "Contacto da Carteira didx:me"
+	},
 	"funkeWallet.about.emailHeader": {
 		"message": "Reach out from Funke EUDI Wallet",
 		"placeholders": {},
@@ -2231,7 +2297,7 @@
 		"message": "Read the Privacy Policy",
 		"placeholders": {},
 		"comments": ["Button label to open the privacy policy"],
-		"origin": [["src/features/onboarding/screens/data-protection.tsx", 36]],
+		"origin": [["src/features/onboarding/screens/data-protection.tsx", 37]],
 		"translation": "Leia a Política de Privacidade"
 	},
 	"nfcScanner.readyToScan.title": {
@@ -2284,11 +2350,25 @@
 		"origin": [["src/features/wallet/components/LatestActivityCard.tsx", 10]],
 		"translation": "Atividade recente"
 	},
+	"home.recentActivity": {
+		"message": "Recent Activity",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 86]],
+		"translation": "Atividade Recente"
+	},
+	"home.recentCredentials": {
+		"message": "Recent Credentials",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 116]],
+		"translation": "Credenciais Recentes"
+	},
 	"verifyPartySlide.recognizedOrganizationTitle": {
 		"message": "Recognized organization",
 		"placeholders": {},
 		"comments": [],
-		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 168]],
+		"origin": [["src/features/receive/slides/VerifyPartySlide.tsx", 178]],
 		"translation": "Organização reconhecida"
 	},
 	"cardLifecycle.refreshCardButton": {
@@ -2360,18 +2440,18 @@
 		"origin": [["../../packages/translations/src/commonMessages.ts", 53]],
 		"translation": "Redefinir carteira"
 	},
-	"submission.reviewTitle": {
-		"message": "Review the request",
-		"placeholders": {},
-		"comments": ["Heading shown at the top of the share credentials screen"],
-		"origin": [["src/features/share/slides/ShareCredentialsSlide.tsx", 61]],
-		"translation": "Analisar o pedido"
-	},
 	"signShare.title": {
 		"message": "Review the request",
 		"placeholders": {},
 		"comments": ["Main heading in the sign & share screen"],
 		"origin": [["src/features/share/slides/SignAndShareSlide.tsx", 72]],
+		"translation": "Analisar o pedido"
+	},
+	"submission.reviewTitle": {
+		"message": "Review the request",
+		"placeholders": {},
+		"comments": ["Heading shown at the top of the share credentials screen"],
+		"origin": [["src/features/share/slides/ShareCredentialsSlide.tsx", 61]],
 		"translation": "Analisar o pedido"
 	},
 	"common.revoked": {
@@ -2403,6 +2483,13 @@
 			["../../packages/ui/src/components/NfcScannerModalAndroid.tsx", 46]
 		],
 		"translation": "Falha na leitura"
+	},
+	"home.scanQr": {
+		"message": "Scan QR",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 59]],
+		"translation": "Ler Código QR"
 	},
 	"home.scanQrButton": {
 		"message": "Scan QR-code",
@@ -2464,6 +2551,13 @@
 		"origin": [["src/features/onboarding/screens/introduction-steps.tsx", 24]],
 		"translation": "Proteger a carteira"
 	},
+	"settings.selfCustodial.title": {
+		"message": "Self-Custodial Mode",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/menu/DidxSettingsScreen.tsx", 90]],
+		"translation": "Modo de Autocustódia"
+	},
 	"pinSlide.title": {
 		"message": "Send data with your PIN code",
 		"placeholders": {},
@@ -2505,8 +2599,18 @@
 		"message": "Settings",
 		"placeholders": {},
 		"comments": ["Header title for the settings screen"],
-		"origin": [["src/features/menu/FunkeSettingsScreen.tsx", 155]],
+		"origin": [
+			["src/features/menu/DidxSettingsScreen.tsx", 63],
+			["src/features/menu/FunkeSettingsScreen.tsx", 155]
+		],
 		"translation": "Configurações"
+	},
+	"settings.item.settings": {
+		"message": "Settings",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/menu/DidxSettingsScreen.tsx", 46]],
+		"translation": "Definições"
 	},
 	"menu.setupEid.title": {
 		"message": "Setup digital ID",
@@ -2773,7 +2877,7 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/FunkeOpenIdCredentialNotificationScreen.tsx", 539]
+			["src/features/receive/FunkeOpenIdCredentialNotificationScreen.tsx", 546]
 		],
 		"translation": "Parar oferta de cartão?"
 	},
@@ -2826,7 +2930,7 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 154]
+			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 164]
 		],
 		"translation": "Sucesso!"
 	},
@@ -2860,7 +2964,7 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 179]
+			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 194]
 		],
 		"translation": "O cartão será buscado quando disponível."
 	},
@@ -3013,6 +3117,13 @@
 		],
 		"translation": "O período de validade deste cartão é de {0} até {1}."
 	},
+	"home.defaultName": {
+		"message": "there",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 39]],
+		"translation": "aí"
+	},
 	"trust.noApprovals": {
 		"message": "There are no organizations that have approved {name}.",
 		"placeholders": {
@@ -3088,6 +3199,13 @@
 		"origin": [["src/config/copy.ts", 23]],
 		"translation": "Esta aplicação foi criada pela Animo Solutions como uma aplicação complementar para Paradym. Todo o código está disponível sob Apache 2.0."
 	},
+	"didxWallet.about.description": {
+		"message": "This app was created by Animo Solutions as the didx:me identity wallet. All code is available under Apache 2.0.",
+		"placeholders": {},
+		"comments": ["About screen description text for the didx:me wallet"],
+		"origin": [["src/config/copy.ts", 38]],
+		"translation": "Esta aplicação foi criada pela Animo Solutions como a carteira de identidade didx:me. Todo o código está disponível sob Apache 2.0."
+	},
 	"funkeWallet.about.description": {
 		"message": "This app was created by Animo Solutions in the context of the SPRIN-D Funke ‘EUDI Wallet Prototypes’. It serves as a prototype for future wallet providers. All code is available under Apache 2.0.",
 		"placeholders": {},
@@ -3151,7 +3269,7 @@
 		"message": "This is your digital wallet. With it, you can store and share information about yourself.",
 		"placeholders": {},
 		"comments": ["Intro paragraph on the welcome screen"],
-		"origin": [["src/features/onboarding/screens/welcome.tsx", 11]],
+		"origin": [["src/features/onboarding/screens/welcome.tsx", 12]],
 		"translation": "Esta é a sua carteira digital. Com ela, pode armazenar e partilhar as suas informações."
 	},
 	"onboardingWalletExplanation.slide1.title": {
@@ -3194,11 +3312,11 @@
 		"translation": "Isso tornará {name} inutilizável e o eliminará da sua carteira."
 	},
 	"pidSetup.enableBiometrics.subtitle": {
-		"message": "To continue, make sure your device has biometric protection enabled, and that Paradym Wallet is allowed to use biometrics.",
+		"message": "To continue, make sure your device has biometric protection enabled, and that the app is allowed to use biometrics.",
 		"placeholders": {},
 		"comments": [],
 		"origin": [["src/utils/sharedPidSetup.ts", 70]],
-		"translation": "Para continuar, certifique-se de que o seu dispositivo tem proteção biométrica ativada e que a Paradym Wallet tem permissão para usar biometria."
+		"translation": "Para continuar, certifique-se de que o seu dispositivo tem proteção biométrica ativada e que a aplicação tem permissão para usar biometria."
 	},
 	"credentialCardSlide.subtitle.pin": {
 		"message": "To receive this card from {issuerName}, you need to enter a PIN.",
@@ -3408,6 +3526,20 @@
 		"origin": [["src/features/receive/slides/AuthCodeFlowSlide.tsx", 131]],
 		"translation": "Verifique a sua conta"
 	},
+	"home.viewAll": {
+		"message": "View All",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 97]],
+		"translation": "Ver Tudo"
+	},
+	"home.viewAll2": {
+		"message": "View All",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 127]],
+		"translation": "Ver Tudo"
+	},
 	"credentials.cardAttributesDescription": {
 		"message": "View attributes of the card",
 		"placeholders": {},
@@ -3442,6 +3574,13 @@
 		"comments": [],
 		"origin": [["src/utils/sharedPidSetup.ts", 63]],
 		"translation": "Precisamos da sua biometria para verificar a sua identidade."
+	},
+	"home.welcomeBack": {
+		"message": "Welcome back",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/wallet/DidxHomeScreen.tsx", 36]],
+		"translation": "Bem-vindo de volta"
 	},
 	"welcome.titleToYourWallet": {
 		"message": "Welcome to your wallet",
@@ -3607,18 +3746,18 @@
 		],
 		"translation": "Não tem o(s) cartão(ões) solicitado(s)."
 	},
-	"submission.missingCardsWarning": {
-		"message": "You don't have the required cards",
-		"placeholders": {},
-		"comments": ["Shown when user lacks required credentials"],
-		"origin": [["src/features/share/slides/ShareCredentialsSlide.tsx", 130]],
-		"translation": "Não tem os cartões necessários"
-	},
 	"signShare.missingCards": {
 		"message": "You don't have the required cards",
 		"placeholders": {},
 		"comments": ["Shown when the user lacks the required credentials"],
 		"origin": [["src/features/share/slides/SignAndShareSlide.tsx", 180]],
+		"translation": "Não tem os cartões necessários"
+	},
+	"submission.missingCardsWarning": {
+		"message": "You don't have the required cards",
+		"placeholders": {},
+		"comments": ["Shown when user lacks required credentials"],
+		"origin": [["src/features/share/slides/ShareCredentialsSlide.tsx", 130]],
 		"translation": "Não tem os cartões necessários"
 	},
 	"pinLocked.description": {
@@ -3685,9 +3824,16 @@
 		"placeholders": {},
 		"comments": [],
 		"origin": [
-			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 229]
+			["src/features/receive/slides/CredentialRetrievalSlide.tsx", 243]
 		],
 		"translation": "Os seus cartões ainda não estão prontos. Verificaremos de vez em quando em segundo plano e obteremos os cartões quando estiverem prontos."
+	},
+	"activity.subtitle": {
+		"message": "Your credential history",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/activity/DidxActivityScreen.tsx", 24]],
+		"translation": "O histórico das suas credenciais"
 	},
 	"cardLifecycle.active.sheetDescription": {
 		"message": "Your credentials may expire or require an active internet connection to validate.",
@@ -3725,6 +3871,13 @@
 		"comments": ["Shown after credentials are shared (no verifier name)"],
 		"origin": [["src/features/share/slides/PresentationSuccessSlide.tsx", 86]],
 		"translation": "As suas informações foram partilhadas."
+	},
+	"settings.selfCustodial.description": {
+		"message": "Your keys, your credentials, your data",
+		"placeholders": {},
+		"comments": [],
+		"origin": [["src/features/menu/DidxSettingsScreen.tsx", 93]],
+		"translation": "As suas chaves, as suas credenciais, os seus dados"
 	},
 	"authenticate.pinRequiredToast": {
 		"message": "Your PIN is required to unlock the app",
