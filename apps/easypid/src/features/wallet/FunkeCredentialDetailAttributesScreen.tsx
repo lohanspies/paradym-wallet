@@ -1,6 +1,4 @@
 import { useLingui } from '@lingui/react/macro'
-import { type CredentialForDisplayId, metadataForDisplay, useCredentialForDisplayById } from '@package/agent'
-
 import { CredentialAttributes, TextBackButton } from '@package/app/components'
 import { useHaptics, useHeaderRightAction, useScrollViewPosition } from '@package/app/hooks'
 import {
@@ -16,6 +14,7 @@ import {
   useToastController,
   YStack,
 } from '@package/ui'
+import { type CredentialId, metadataForDisplay, useCredentialById } from '@paradym/wallet-sdk'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { useRef, useState } from 'react'
 import { FadeInUp, FadeOutUp } from 'react-native-reanimated'
@@ -23,8 +22,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { CustomCredentialAttributes, hasCustomCredentialDisplay } from './components/CustomCredentialAttributes'
 
 export function FunkeCredentialDetailAttributesScreen() {
-  const { id } = useLocalSearchParams<{ id: CredentialForDisplayId }>()
-  const { credential } = useCredentialForDisplayById(id)
+  const { id } = useLocalSearchParams<{ id: CredentialId }>()
+  const { credential } = useCredentialById(id)
 
   const toast = useToastController()
   const router = useRouter()
@@ -34,9 +33,9 @@ export function FunkeCredentialDetailAttributesScreen() {
   const [isSheetOpen, setIsSheetOpen] = useState(false)
   const scrollViewRef = useRef<ScrollViewRefType>(null)
   const { t } = useLingui()
-  const isCustomDisplayAvailable = credential?.metadata.type
-    ? hasCustomCredentialDisplay(credential?.metadata.type)
-    : false
+
+  // Check if custom display is available: either has custom rendering or has different displayed vs all attributes
+  const isCustomDisplayAvailable = credential ? hasCustomCredentialDisplay(credential.metadata.type) : false
 
   const {
     isVisible: isMetadataVisible,
@@ -99,7 +98,7 @@ export function FunkeCredentialDetailAttributesScreen() {
         />
         <ScrollView ref={scrollViewRef} onScroll={handleScroll} scrollEventThrottle={scrollEventThrottle}>
           <YStack px="$4" gap="$4" marginBottom={bottom}>
-            <CustomCredentialAttributes credential={credential} />
+            <CustomCredentialAttributes credential={credential} scrollRef={scrollViewRef} />
             <AnimatedStack
               key={isShareableAttributesVisible ? 'visible-shareable-attributes' : 'hidden-shareable-attributes'}
               onLayout={(event) => setShareableAttributesElementPosition(event.nativeEvent.layout.y)}
@@ -115,6 +114,7 @@ export function FunkeCredentialDetailAttributesScreen() {
                     comment: 'Header for attributes that can be shared with a verifier',
                   })}
                   attributes={credential.attributes}
+                  scrollRef={scrollViewRef}
                 />
               )}
             </AnimatedStack>
@@ -133,6 +133,7 @@ export function FunkeCredentialDetailAttributesScreen() {
                     comment: 'Header for metadata attributes of a credential',
                   })}
                   attributes={metadataForDisplay(credential.metadata)}
+                  scrollRef={scrollViewRef}
                 />
               )}
             </AnimatedStack>

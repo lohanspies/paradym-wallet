@@ -1,10 +1,10 @@
-import type { TrustedX509Entity, TrustList } from '@package/agent'
+import type { TrustedDidEntity, TrustedOpenId4VciIssuerEntity, TrustedX509Entity, TrustList } from '@paradym/wallet-sdk'
 import ExpoConstants from 'expo-constants'
 import { isParadymWallet } from './hooks/useFeatureFlag'
 
 export const mediatorDid = ExpoConstants.expoConfig?.extra?.mediatorDid
 export const appScheme = ExpoConstants.expoConfig?.scheme as string
-export const redirectBaseUrl = ExpoConstants.expoConfig?.extra?.redirectBaseUrl as string | undefined
+export const allowedRedirectBaseUrls = ExpoConstants.expoConfig?.extra?.allowedRedirectBaseUrls as string[] | undefined
 
 export const EASYPID_WALLET_PID_PIN_KEY_ID = 'EASYPID_WALLET_PID_PIN_KEY_ID_NO_BIOMETRICS'
 export const EASYPID_WALLET_INSTANCE_LONG_TERM_AES_KEY_ID = 'EASYPID_WALLET_INSTANCE_LONG_TERM_AES_KEY_ID'
@@ -12,7 +12,8 @@ export const EASYPID_WALLET_INSTANCE_LONG_TERM_AES_KEY_ID = 'EASYPID_WALLET_INST
 export const walletClient = {
   // For easypid we don't want to update yet, as it will break integration with the playground
   clientId: isParadymWallet() ? appScheme : 'wallet',
-  redirectUri: redirectBaseUrl ?? `${appScheme}:///wallet/redirect`,
+  // Take first redirect if available
+  redirectUri: allowedRedirectBaseUrls?.[0] ?? `${appScheme}:///wallet/redirect`,
 }
 
 export const trustedX509Entities = [
@@ -50,6 +51,15 @@ pUGCFdfNLQIgHGSa5u5ZqUtCrnMiaEageO71rjzBlov0YUH4+6ELioY=
     name: 'Animo Playground',
     logoUri: 'https://funke.animo.id/assets/verifiers/animo/verifier.jpg',
     url: 'https://funke.animo.id',
+    demo: true,
+  },
+  {
+    entityId: 'playground.animo.id',
+    certificate:
+      'MIIB2zCCAYCgAwIBAgIRALanVqNUK4dgPlUmlAasZ24wCgYIKoZIzj0EAwIwHTEOMAwGA1UEAxMFQW5pbW8xCzAJBgNVBAYTAk5MMB4XDTI0MTEyODE2MjgzMFoXDTI4MTEyODE2MjgzMFowHTEOMAwGA1UEAxMFQW5pbW8xCzAJBgNVBAYTAk5MMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEwDpb2uNodErbJfEWteLF6pGiqaxNfF9rFyttjJy+No0gmzn4wkgYqvGtcX5W4blXT1PQubGml5QUmpm5d41zd6OBoDCBnTAdBgNVHQ4EFgQUVC5XW1PTYNo6yWnkJGgvBVCtWZUwDgYDVR0PAQH/BAQDAgEGMCYGA1UdEgQfMB2GG2h0dHBzOi8vcGxheWdyb3VuZC5hbmltby5pZDASBgNVHRMBAf8ECDAGAQH/AgEAMDAGA1UdHwQpMCcwJaAjoCGGH2h0dHBzOi8vcGxheWdyb3VuZC5hbmltby5pZC9jcmwwCgYIKoZIzj0EAwIDSQAwRgIhAJvXTWWteCIeZPbzn+Y++Lpf4eFTmxP2M5o4phGsLuZcAiEAuiL89d9a2CQbQo8dzNpnV+P9JrUnKRQuP5ZZ9VJcoJI=',
+    name: 'Animo Playground',
+    logoUri: 'https://playground.animo.id/assets/verifiers/animo/verifier.jpg',
+    url: 'https://playground.animo.id',
     demo: true,
   },
   {
@@ -128,34 +138,81 @@ SSEvZdjQ1YFEB9fdwof5kkokEEz2qw==
       'https://media.licdn.com/dms/image/v2/D4D0BAQHZ2gM5cWHJxQ/company-logo_200_200/company-logo_200_200/0/1708350843808/netlight_consulting_logo?e=1762992000&v=beta&t=2Qpgj26VRA_7AOWGvzQL7_xvyQ2c1Ic8auzAce6lVS8',
     demo: true,
   },
+  {
+    name: 'Animo Playground',
+    url: 'https://playground.animo.id',
+    certificate:
+      'MIIB2zCCAYCgAwIBAgIRALanVqNUK4dgPlUmlAasZ24wCgYIKoZIzj0EAwIwHTEOMAwGA1UEAxMFQW5pbW8xCzAJBgNVBAYTAk5MMB4XDTI0MTEyODE2MjgzMFoXDTI4MTEyODE2MjgzMFowHTEOMAwGA1UEAxMFQW5pbW8xCzAJBgNVBAYTAk5MMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEwDpb2uNodErbJfEWteLF6pGiqaxNfF9rFyttjJy+No0gmzn4wkgYqvGtcX5W4blXT1PQubGml5QUmpm5d41zd6OBoDCBnTAdBgNVHQ4EFgQUVC5XW1PTYNo6yWnkJGgvBVCtWZUwDgYDVR0PAQH/BAQDAgEGMCYGA1UdEgQfMB2GG2h0dHBzOi8vcGxheWdyb3VuZC5hbmltby5pZDASBgNVHRMBAf8ECDAGAQH/AgEAMDAGA1UdHwQpMCcwJaAjoCGGH2h0dHBzOi8vcGxheWdyb3VuZC5hbmltby5pZC9jcmwwCgYIKoZIzj0EAwIDSQAwRgIhAJvXTWWteCIeZPbzn+Y++Lpf4eFTmxP2M5o4phGsLuZcAiEAuiL89d9a2CQbQo8dzNpnV+P9JrUnKRQuP5ZZ9VJcoJI=',
+    logoUri: 'https://playground.animo.id/logo.svg',
+    entityId: 'Animo_Playground',
+    demo: true,
+  },
 ] satisfies Array<TrustedX509Entity>
 
 export const trustedX509Certificates = trustedX509Entities.map((e) => e.certificate)
 
-// https://gitlab.opencode.de/bmi/eudi-wallet/eidas-2.0-architekturkonzept/-/blob/main/architecture-proposal.md#pid-contents
-const sdJwtVcVcts = [
-  'https://demo.pid-issuer.bundesdruckerei.de/credentials/pid/1.0',
-  'https://example.bmi.bund.de/credential/pid/1.0',
-]
+export const trustedDidEntities = [
+  {
+    entityId: 'did:web:metadata.dev.paradym.id:41708c95-743b-48d1-b4d5-23547f67e192',
+    did: 'did:web:metadata.dev.paradym.id:41708c95-743b-48d1-b4d5-23547f67e192',
+    logoUri: 'https://hva.animo.id/images/logo-hva-klein.png',
+    name: 'Hogeschool van Amsterdam',
+    url: 'https://hva.nl',
+    demo: true,
+  },
+  {
+    entityId: 'did:web:metadata.paradym.id:f976c06e-da46-4b79-bc6e-bfda07c97f91',
+    did: 'did:web:metadata.paradym.id:f976c06e-da46-4b79-bc6e-bfda07c97f91',
+    logoUri: 'https://hva.animo.id/images/logo-hva-klein.png',
+    name: 'Hogeschool van Amsterdam',
+    url: 'https://hva.nl',
+    demo: false,
+  },
+] satisfies Array<TrustedDidEntity>
 
-const arfSdJwtVcVcts = ['eu.europa.ec.eudi.pid.1', 'urn:eu.europa.ec.eudi:pid:1', 'urn:eudi:pid:1']
+export const trustedOpenId4VciIssuerEntities = [
+  {
+    entityId: 'https://agent.dev.paradym.id/oid4vci/43700792-bc9f-4b8c-be2f-59a227d7a6cb',
+    issuer: 'https://agent.dev.paradym.id/oid4vci/43700792-bc9f-4b8c-be2f-59a227d7a6cb',
+    logoUri: 'https://hva.animo.id/images/logo-hva-klein.png',
+    name: 'Hogeschool van Amsterdam',
+    url: 'https://hva.nl',
+    demo: true,
+  },
+  {
+    entityId: 'https://agent.paradym.id/oid4vci/655913d0-e655-4b3f-9335-a8af00922270',
+    issuer: 'https://agent.paradym.id/oid4vci/655913d0-e655-4b3f-9335-a8af00922270',
+    logoUri: 'https://hva.animo.id/images/logo-hva-klein.png',
+    name: 'Hogeschool van Amsterdam',
+    url: 'https://hva.nl',
+    demo: false,
+  },
+  {
+    entityId: 'https://issuer.dev.eduid.nl/eduid',
+    issuer: 'https://issuer.dev.eduid.nl/eduid',
+    logoUri: 'https://static.dev.eduid.nl/images/eduid_credential_logo.png',
+    name: 'eduID',
+    url: 'https://dev.eduid.nl',
+    demo: true,
+  },
+  {
+    entityId: 'https://issuer.eduid.nl/eduid',
+    issuer: 'https://issuer.eduid.nl/eduid',
+    logoUri: 'https://static.eduid.nl/images/eduid_credential_logo.png',
+    name: 'eduID',
+    url: 'https://eduid.nl',
+    demo: false,
+  },
+] satisfies Array<TrustedOpenId4VciIssuerEntity>
 
 // https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-3/annex-3.01-pid-rulebook.md#221-eu-wide-attestation-type-and-namespace-for-pid
-const msoMdocDoctypes = ['eu.europa.ec.eudi.pid.1']
-
-const mdlSdJwtVcVcts = ['https://example.eudi.ec.europa.eu/mdl/1']
-
-const mdlMdocDoctypes = ['org.iso.18013.5.1.mDL']
-
 export const pidSchemes = {
-  arfSdJwtVcVcts,
-  sdJwtVcVcts,
-  msoMdocDoctypes,
+  sdJwtVcVcts: ['urn:eudi:pid:1'],
+  msoMdocDoctypes: ['eu.europa.ec.eudi.pid.1'],
 }
 
 export const mdlSchemes = {
-  mdlSdJwtVcVcts,
-  mdlMdocDoctypes,
+  mdlMdocDoctypes: ['org.iso.18013.5.1.mDL'],
 }
 
 export const eudiTrustList: TrustList = {
@@ -180,3 +237,13 @@ export const eudiTrustList: TrustList = {
     },
   ],
 }
+
+const BASE_URL = 'https://funke.animo.id/oid4vp'
+
+export const trustedEntityIds = [
+  `${BASE_URL}/0193687b-0c27-7b82-a686-ff857dc6bbb3`,
+  `${BASE_URL}/0193687f-20d8-720a-9139-ed939ba510fa`,
+  `${BASE_URL}/019368ed-3787-7669-b7f4-8c012238e90d`,
+  `${BASE_URL}/01936907-56a3-7007-a61f-44bff8b5d175`,
+  `${BASE_URL}/01936903-8879-733f-8eaf-6f2fa862099c`,
+] satisfies [string, ...string[]]

@@ -4,6 +4,14 @@ import { defineMessage } from '@lingui/core/macro'
 import type { SupportedLocale } from './i18n'
 
 export const commonMessages = {
+  showLess: defineMessage({
+    id: 'common.showLess',
+    message: 'Show less',
+  }),
+  showMore: defineMessage({
+    id: 'common.showMore',
+    message: 'Show more',
+  }),
   stop: defineMessage({
     id: 'common.stop',
     message: 'Stop',
@@ -212,6 +220,10 @@ export const commonMessages = {
   invitationParsingFailed: defineMessage({
     id: 'common.invitationParsingFailed',
     message: 'Failed to parse invitation.',
+  }),
+  invitationResolvedParameterMissing: defineMessage({
+    id: 'common.invitationResolvedParameterMissing',
+    message: 'Resolved parameter is missing, but required for accepting an invitation.',
   }),
   invitationNotSupported: defineMessage({
     id: 'common.invitationNotSupported',

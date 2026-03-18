@@ -71,7 +71,6 @@ const createBaseConfig = (appSpecific) => {
     associatedDomains = [],
     projectId,
     extraConfig = {},
-    enableAusweisSdkEntitlementsIos = true,
   } = appSpecific
 
   const invitationSchemes = [...baseInvitationSchemes, ...additionalInvitationSchemes, scheme]
@@ -130,14 +129,6 @@ const createBaseConfig = (appSpecific) => {
         },
       ],
       [
-        '@animo-id/expo-ausweis-sdk',
-        {
-          ios: {
-            enableEntitlements: enableAusweisSdkEntitlementsIos,
-          },
-        },
-      ],
-      [
         '@animo-id/expo-mdoc-data-transfer',
         {
           ios: {
@@ -155,7 +146,7 @@ const createBaseConfig = (appSpecific) => {
             extraMavenRepos: ['https://s01.oss.sonatype.org/content/repositories/snapshots/'],
           },
           ios: {
-            deploymentTarget: '15.1',
+            deploymentTarget: '16.0',
             useFrameworks: 'dynamic',
           },
         },
@@ -215,7 +206,7 @@ const createBaseConfig = (appSpecific) => {
           },
         })),
         ...associatedDomains.flatMap((host) =>
-          ['/invitation', '/wallet/redirect'].map((path) => ({
+          ['/invitation', '/wallet/redirect', '/oauth2/redirect'].map((path) => ({
             action: 'VIEW',
             category: ['DEFAULT', 'BROWSABLE'],
             autoVerify: true,

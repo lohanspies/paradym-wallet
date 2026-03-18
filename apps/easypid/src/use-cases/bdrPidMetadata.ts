@@ -1,5 +1,4 @@
-import type { SdJwtVcTypeMetadata } from '@credo-ts/core'
-import type { OpenId4VcCredentialMetadata } from '@package/agent'
+import type { OpenId4VcCredentialMetadata, SdJwtVcTypeMetadata } from '@paradym/wallet-sdk'
 
 export const bdrPidCredentialDisplay = {
   name: 'Personalausweis',
@@ -50,12 +49,14 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
     'The definition of the core identification credential for all natural persons in Germany - first revision',
   display: [
     {
-      lang: 'en-US',
+      locale: 'en-US',
       // Name from pid metadata is very long?!?
       // name: 'German Person Identification Data Credential',
       // description: 'The core identification credential for all natural persons in Germany',
       name: bdrPidCredentialDisplay.name,
+
       rendering: {
+        svg_templates: undefined,
         simple: {
           background_color: bdrPidCredentialDisplay.backgroundColor,
           text_color: bdrPidCredentialDisplay.textColor,
@@ -69,7 +70,7 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       },
     },
     {
-      lang: 'de-DE',
+      locale: 'de-DE',
       name: 'Deutscher Personenidentifikationsnachweis',
       description: 'Der zentrale Identifikationsnachweis für alle natürlichen Personen in Deutschland',
     },
@@ -87,11 +88,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['given_name'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Vorname',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Given Name',
         },
       ],
@@ -101,11 +102,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['family_name'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Nachname',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Last Name',
         },
       ],
@@ -115,11 +116,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['birthdate'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Geburtsdatum',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Birthdate',
         },
       ],
@@ -129,12 +130,12 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['source_document_type'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Quelldokumenttyp',
           description: 'Der Typ der Quelle des Dokumentes, beispielweise der Personalausweis oder der Aufenthaltstitel',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Source Document Type',
           description:
             'The type of the source of the document, for example the national identity card or the residence title',
@@ -146,11 +147,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['address'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Adresse',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Address',
         },
       ],
@@ -160,11 +161,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['address', 'street_address'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Straße',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Street Address',
         },
       ],
@@ -174,11 +175,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['address', 'locality'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Ort',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Locality',
         },
       ],
@@ -188,11 +189,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['address', 'postal_code'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Postleitzahl',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Postal Code',
         },
       ],
@@ -202,11 +203,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['address', 'country'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Land',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Country',
         },
       ],
@@ -216,11 +217,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['nationalities'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Staatsangehörigkeiten',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Nationalities',
         },
       ],
@@ -230,11 +231,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['gender'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Geschlecht',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Gender',
         },
       ],
@@ -244,11 +245,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['birth_family_name'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Geburtsname',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Family Name at Birth',
         },
       ],
@@ -258,11 +259,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['place_of_birth'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Geburtsort',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Place of Birth',
         },
       ],
@@ -272,11 +273,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['place_of_birth', 'locality'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Geburtsort',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Place of Birth',
         },
       ],
@@ -286,11 +287,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['place_of_birth', 'locality'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Ort',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Locality',
         },
       ],
@@ -300,11 +301,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['place_of_birth', 'country'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Land',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Country',
         },
       ],
@@ -314,11 +315,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['also_known_as'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Ordens- oder Künstlername',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Religious Name or Pseudonym',
         },
       ],
@@ -328,11 +329,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['age_equal_or_over'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Altersbestätigung',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Age Verification',
         },
       ],
@@ -342,11 +343,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['age_equal_or_over', '12'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Mindestalter 12',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Minimum Age 12',
         },
       ],
@@ -356,11 +357,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['age_equal_or_over', '14'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Mindestalter 14',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Minimum Age 14',
         },
       ],
@@ -370,11 +371,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['age_equal_or_over', '16'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Mindestalter 16',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Minimum Age 16',
         },
       ],
@@ -384,11 +385,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['age_equal_or_over', '18'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Mindestalter 18',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Minimum Age 18',
         },
       ],
@@ -398,11 +399,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['age_equal_or_over', '21'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Mindestalter 21',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Minimum Age 21',
         },
       ],
@@ -412,11 +413,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['age_equal_or_over', '65'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Mindestalter 65',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Minimum Age 65',
         },
       ],
@@ -430,11 +431,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['iat'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Ausstellungsdatum',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Issuing Date',
         },
       ],
@@ -444,11 +445,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['exp'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Ablaufdatum',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Expiry Date',
         },
       ],
@@ -458,11 +459,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['issuing_authority'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Ausstellende Behörde',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Issuing Authority',
         },
       ],
@@ -472,11 +473,11 @@ export const bdrPidSdJwtTypeMetadata: SdJwtVcTypeMetadata = {
       path: ['issuing_country'],
       display: [
         {
-          lang: 'de-DE',
+          locale: 'de-DE',
           label: 'Ausstellungsland',
         },
         {
-          lang: 'en-US',
+          locale: 'en-US',
           label: 'Issuing Country',
         },
       ],

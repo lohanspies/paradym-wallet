@@ -1,6 +1,5 @@
 import { useDevelopmentMode } from '@easypid/hooks'
 import { Trans, useLingui } from '@lingui/react/macro'
-import type { TrustedEntity, TrustMechanism } from '@package/agent'
 import { TextBackButton, useScrollViewPosition } from '@package/app'
 import { commonMessages } from '@package/translations'
 import {
@@ -18,6 +17,7 @@ import {
   XStack,
   YStack,
 } from '@package/ui'
+import type { TrustedEntity, TrustMechanism } from '@paradym/wallet-sdk'
 import { useRef } from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
@@ -45,13 +45,11 @@ export function FunkeTrustDetailScreen({
   const trustMechanismName =
     trustMechanism === 'eudi_rp_authentication'
       ? 'EU Trusted List'
-      : trustMechanism === 'openid_federation'
-        ? 'OpenID Federation'
-        : trustMechanism === 'did'
-          ? 'Decentralized Identifier'
-          : trustMechanism === 'x509'
-            ? 'X.509 Certificate'
-            : 'No signature'
+      : trustMechanism === 'did'
+        ? 'Decentralized Identifier'
+        : trustMechanism === 'x509'
+          ? 'X.509 Certificate'
+          : 'No signature'
 
   return (
     <FlexPage gap="$0" paddingHorizontal="$0">
@@ -141,9 +139,9 @@ export function FunkeTrustDetailScreen({
                       <Image src={entity.logoUri} height="100%" width="100%" />
                     </Circle>
                   )}
-                  <XStack gap="$1" f={1} justifyContent="space-between" ai="center">
-                    <YStack>
-                      <Heading f={1} numberOfLines={2} heading="h3">
+                  <XStack gap="$2" display="flex" f={1} justifyContent="space-between" ai="center">
+                    <YStack flexShrink={1}>
+                      <Heading heading="h3" numberOfLines={3} textOverflow="ellipsis">
                         {entity.organizationName}
                       </Heading>
                       {entity.demo && (

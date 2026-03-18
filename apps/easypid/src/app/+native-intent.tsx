@@ -1,9 +1,9 @@
 import 'fast-text-encoding'
 
 import { TypedArrayEncoder } from '@credo-ts/core'
-import { appScheme, redirectBaseUrl } from '@easypid/constants'
-import { logger, parseInvitationUrlSync } from '@package/agent'
+import { allowedRedirectBaseUrls, appScheme } from '@easypid/constants'
 import { deeplinkSchemes } from '@package/app'
+import { LogLevel, ParadymWalletSdkConsoleLogger, parseInvitationUrlSync } from '@paradym/wallet-sdk'
 import * as Haptics from 'expo-haptics'
 import { router } from 'expo-router'
 import { credentialDataHandlerOptions } from './(app)/_layout'
@@ -12,6 +12,8 @@ import { credentialDataHandlerOptions } from './(app)/_layout'
 // deeplink from working on a cold startup. We updated the invitation handler to
 // be fully sync.
 export function redirectSystemPath({ path, initial }: { path: string; initial: boolean }) {
+  const logger = new ParadymWalletSdkConsoleLogger(LogLevel.trace)
+
   logger.debug(`Handling deeplink for path ${path}.`, {
     initial,
   })
@@ -31,13 +33,15 @@ export function redirectSystemPath({ path, initial }: { path: string; initial: b
     const parsedPath = new URL(path)
     const credentialAuthorizationCode = parsedPath.searchParams.get('code')
 
-    const parsedRedirectBaseUrl = redirectBaseUrl ? new URL(redirectBaseUrl) : undefined
-
     const isUniversalRedirect =
-      parsedRedirectBaseUrl &&
-      parsedRedirectBaseUrl.host === parsedPath.host &&
-      parsedRedirectBaseUrl.pathname === parsedPath.pathname &&
-      parsedRedirectBaseUrl.host === parsedPath.host
+      allowedRedirectBaseUrls?.some((redirectBaseUrl) => {
+        const parsedRedirectBaseUrl = new URL(redirectBaseUrl)
+        return (
+          parsedRedirectBaseUrl.host === parsedPath.host &&
+          parsedRedirectBaseUrl.pathname === parsedPath.pathname &&
+          parsedRedirectBaseUrl.host === parsedPath.host
+        )
+      }) ?? false
 
     const isDeeplinkRedirect = parsedPath.protocol === `${appScheme}:` && parsedPath.pathname === '/wallet/redirect'
 
@@ -58,50 +62,48 @@ export function redirectSystemPath({ path, initial }: { path: string; initial: b
       return null
     }
 
-    const parseResult = parseInvitationUrlSync(path)
-    if (!parseResult.success) {
+    try {
+      const invitationData = parseInvitationUrlSync(path)
+      let redirectPath: string | undefined
+
+      if (!credentialDataHandlerOptions.allowedInvitationTypes.includes(invitationData.type)) {
+        logger.warn(`Invitation type ${invitationData.type} is not allowed. Routing to home screen`)
+        void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error)
+        return '/'
+      }
+
+      if (invitationData.type === 'openid-credential-offer') {
+        redirectPath = `/notifications/openIdCredential?uri=${encodeURIComponent(invitationData.data)}`
+      }
+      if (invitationData.type === 'openid-authorization-request') {
+        redirectPath = `/notifications/openIdPresentation?uri=${encodeURIComponent(invitationData.data)}`
+      }
+      if (invitationData.type === 'didcomm') {
+        redirectPath = `/notifications/didcomm?invitationUrl=${encodeURIComponent(invitationData.data)}`
+      }
+
+      if (redirectPath) {
+        // Always make the user authenticate first when opening with a deeplink
+        // On initial load this is already the case so we skip it
+        if (!initial) {
+          const encodedRedirect = TypedArrayEncoder.toBase64URL(TypedArrayEncoder.fromString(redirectPath))
+          redirectPath = `/authenticate?redirectAfterUnlock=${encodedRedirect}`
+        }
+
+        logger.debug(`Redirecting to path ${redirectPath}`)
+        return redirectPath
+      }
+
+      void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error)
+      return '/'
+    } catch (error) {
       logger.info('Deeplink is not a valid invitation. Routing to home screen', {
-        error: parseResult.error,
-        message: parseResult.message,
+        error: error,
+        message: (error as Error).message,
       })
 
       return '/'
     }
-
-    const invitationData = parseResult.result
-
-    let redirectPath: string | undefined
-
-    if (!credentialDataHandlerOptions.allowedInvitationTypes.includes(invitationData.type)) {
-      logger.warn(`Invitation type ${invitationData.type} is not allowed. Routing to home screen`)
-      void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error)
-      return '/'
-    }
-
-    if (invitationData.type === 'openid-credential-offer') {
-      redirectPath = `/notifications/openIdCredential?uri=${encodeURIComponent(invitationData.data)}`
-    }
-    if (invitationData.type === 'openid-authorization-request') {
-      redirectPath = `/notifications/openIdPresentation?uri=${encodeURIComponent(invitationData.data)}`
-    }
-    if (invitationData.type === 'didcomm') {
-      redirectPath = `/notifications/didcomm?invitationUrl=${encodeURIComponent(invitationData.data)}`
-    }
-
-    if (redirectPath) {
-      // Always make the user authenticate first when opening with a deeplink
-      // On initial load this is already the case so we skip it
-      if (!initial) {
-        const encodedRedirect = TypedArrayEncoder.toBase64URL(TypedArrayEncoder.fromString(redirectPath))
-        redirectPath = `/authenticate?redirectAfterUnlock=${encodedRedirect}`
-      }
-
-      logger.debug(`Redirecting to path ${redirectPath}`)
-      return redirectPath
-    }
-
-    void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error)
-    return '/'
   } catch (_error) {
     return '/'
   }
