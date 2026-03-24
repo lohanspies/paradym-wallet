@@ -1,10 +1,11 @@
-import { createBaseConfig } from './base.app.config'
-import { version } from './package.json'
+const { createBaseConfig } = require('./base.app.config.cjs')
+const { version } = require('./package.json')
 
+//NOTE: Update mediator DIDs for DIDx stack
 const mediatorDids = {
-  development: 'did:web:mediator.dev.paradym.id',
-  preview: 'did:web:mediator.paradym.id',
-  production: 'did:web:mediator.paradym.id',
+  development: 'did:web:creds-mediator.uat.didx.co.za',
+  preview: 'did:web:creds-mediator.uat.didx.co.za',
+  production: 'did:web:creds-mediator.uat.didx.co.za',
 }
 
 const APP_CONFIGS = {
@@ -24,6 +25,28 @@ const APP_CONFIGS = {
     projectId: '28b058bb-3c4b-4347-8e72-41dfc1dd99eb',
     assets: ['./assets/funke/icon.png'],
   }),
+
+  DIDX_WALLET: createBaseConfig({
+    name: 'DIDx Me Wallet Edge',
+    scheme: 'didx-me-wallet-edge',
+    icon: './assets/didx/icon.png',
+    // NOTE: android requires paths referenced directly in code
+    // to only contain _ a-Z 0-9, so we use _ for all files
+    adaptiveIcon: './assets/didx/adaptive_icon.png',
+    splash: './assets/didx/splash.png',
+    splashIcon: './assets/didx/splash_icon.png',
+    slug: 'didx-me-wallet-edge',
+    version,
+    bundleId: 'za.co.didx.edge.wallet',
+    associatedDomains: ['didx.co.za','dev.didxtech.com', 'test.didxtech.com', 'stage.didx.co.za', 'uat.didx.co.za', 'hub.didx.co.za'],
+    projectId: '7799f9ca-792e-4a10-a206-cdd4b6583a75',
+    assets: ['./assets/didx/icon.png'],
+    enableAusweisSdkEntitlementsIos: false,
+    extraConfig: {
+      mediatorDid: mediatorDids[process.env.APP_VARIANT || 'production'],
+      redirectBaseUrl: 'https://creds-app.uat.didx.co.za/invitation/redirect',
+    },    
+  }),  
 
   PARADYM_WALLET: createBaseConfig({
     name: 'Paradym Wallet',
@@ -55,8 +78,8 @@ APP_CONFIGS.FUNKE_WALLET.android.config = {
   largeHeap: true,
 }
 
-export default () => {
-  const appType = process.env.EXPO_PUBLIC_APP_TYPE ?? 'PARADYM_WALLET'
+module.exports = () => {
+  const appType = process.env.EXPO_PUBLIC_APP_TYPE ?? 'DIDX_WALLET'
   if (!appType || !APP_CONFIGS[appType]) {
     throw new Error(`Invalid App Type: ${appType}. Must be one of: ${Object.keys(APP_CONFIGS).join(', ')}`)
   }

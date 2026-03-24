@@ -71,21 +71,237 @@ You only need to install the development build when **native** dependencies chan
 
 Once installed you can run `pnpm start` from the root of the project to start your development server.
 
+## 🔨 Building the App
+
+The project supports three app variants, selected via the `EXPO_PUBLIC_APP_TYPE` environment variable:
+
+| Variant | Env Value | Bundle ID | Description |
+|---------|-----------|-----------|-------------|
+| Paradym Wallet | `PARADYM_WALLET` | `id.paradym.wallet` | Main Paradym wallet |
+| Funke Wallet | `FUNKE_WALLET` | `id.animo.ausweis` | EUDI Wallet Prototype |
+| DIDx Wallet | `DIDX_WALLET` | `za.co.didx.edge.wallet` | DIDx Me Wallet Edge |
+
+The default variant (when no env var is set) is configured in `apps/easypid/app.config.js`.
+
+### Local Development Builds
+
+Local builds compile on your machine using Xcode (iOS) or Android SDK. This is the fastest way to iterate during development.
+
+```bash
+cd apps/easypid
+
+# Build and run on iOS simulator (default variant)
+npx expo run:ios --simulator
+
+# Build and run on iOS physical device
+npx expo run:ios --device
+
+# Build and run on Android emulator/device
+npx expo run:android
+
+# Build a specific app variant
+EXPO_PUBLIC_APP_TYPE=DIDX_WALLET npx expo run:ios --simulator
+EXPO_PUBLIC_APP_TYPE=FUNKE_WALLET npx expo run:ios --device
+EXPO_PUBLIC_APP_TYPE=PARADYM_WALLET npx expo run:android
+```
+
+If you need a clean rebuild (e.g. after changing native dependencies or switching variants):
+
+```bash
+cd apps/easypid
+
+# Clean and regenerate the native project, then build
+EXPO_PUBLIC_APP_TYPE=DIDX_WALLET npx expo prebuild --clean
+EXPO_PUBLIC_APP_TYPE=DIDX_WALLET npx expo run:ios --simulator
+```
+
+Once a development build is installed, you can start just the Metro bundler without rebuilding:
+
+```bash
+# From the project root
+pnpm start
+
+# Or from apps/easypid with cache clearing
+cd apps/easypid
+npx expo start --dev-client --clear
+```
+
+> **Note:** You only need to rebuild the native app when native dependencies change. For JS-only changes, just restart Metro.
+
+### EAS Build (Cloud Builds)
+
+[EAS Build](https://docs.expo.dev/build/introduction/) compiles the app on Expo's cloud servers. All build profiles are defined in `apps/easypid/eas.json`. Always run EAS commands from the `apps/easypid/` directory.
+
+```bash
+cd apps/easypid
+eas build --profile <profile-name> --platform <ios|android|all>
+```
+
+#### Build Profiles
+
+**Base** — Shared configuration inherited by all profiles. Sets Node version and Xcode image. Not directly buildable.
+
+##### Development Profiles
+
+Creates a **dev client** build that includes the `expo-dev-client` runtime (dev menu, hot reload, inspector).
+
+```bash
+# Physical device (ad-hoc provisioned)
+eas build --profile development --platform ios
+eas build --profile development --platform android
+
+# Simulator only
+eas build --profile development-simulator --platform ios
+```
+
+| Profile | iOS target | Android target |
+|---------|-----------|----------------|
+| `development` | **Physical device** (ad-hoc provisioned, requires registered UDID) | Sideloadable `.apk` |
+| `development-simulator` | **Simulator only** | _(inherits from development)_ |
+
+- Uses `APP_VARIANT=development`, appending `.dev` to the bundle ID
+- Builds the default app variant (currently DIDx) — set `EXPO_PUBLIC_APP_TYPE` to override
+- Once installed, connect via: `npx expo start --dev-client`
+- Available for download from the [expo.dev](https://expo.dev) build dashboard
+- For physical iOS devices, register your UDID first: `eas device:create`
+
+##### Preview Profiles (Internal Testing / QA)
+
+Production-like builds without dev tools, distributed to registered test devices.
+
+```bash
+# Funke
+eas build --profile funke-preview --platform all
+eas build --profile funke-preview-simulator --platform ios  # simulator variant
+
+# Paradym
+eas build --profile paradym-preview --platform all
+eas build --profile paradym-preview-simulator --platform ios
+
+# DIDx
+eas build --profile didx-preview --platform all
+eas build --profile didx-preview-simulator --platform ios
+```
+
+- **Distribution:** `internal` — iOS uses ad-hoc provisioning (requires registered device UDIDs), Android produces `.apk`
+- **Bundle IDs** get `.preview` suffix (e.g. `za.co.didx.edge.wallet.preview`)
+- Available via shareable install links on the expo.dev dashboard
+- Simulator variants add `simulator: true` for testing on iOS Simulator without a physical device
+
+##### Production Profiles (App Store / Play Store)
+
+Store-signed builds ready for submission.
+
+```bash
+# Funke
+eas build --profile funke-production --platform all
+
+# Paradym
+eas build --profile paradym-production --platform all
+
+# DIDx
+eas build --profile didx-production --platform all
+```
+
+- **Distribution:** `store` — signed for App Store and Play Store
+- **Android:** produces `.aab` (app bundle, required by Play Store), built on `large` resource class
+- **autoIncrement:** version number increments automatically on each build
+- Available on the expo.dev dashboard, then submitted via `eas submit`
+
+##### Other Profiles
+
+| Profile | Description |
+|---------|-------------|
+| `funke-production-local` | Funke production config but as APK (for local device testing without store submission) |
+| `e2e-test` | Extends `didx-preview` with `withoutCredentials: true` and simulator builds for CI/CD automated testing |
+
+#### Submitting to Stores
+
+After a production build completes, submit it to the stores:
+
+```bash
+# Submit to App Store Connect and Google Play
+eas submit --profile funke-production --platform all
+eas submit --profile paradym-production --platform all
+eas submit --profile didx-production --platform all
+```
+
+Submit profiles are configured in the `submit` section of `eas.json`:
+
+| Profile | iOS (App Store Connect) | Android (Google Play) |
+|---------|------------------------|----------------------|
+| `funke-production` | App ID `6636489314`, Company: Animo Solutions | `internal` test track |
+| `paradym-production` | App ID `6449846111`, Company: Animo Solutions | `alpha` track |
+| `didx-production` | App ID `6759250270`, Company: DIDx | `alpha` track |
+
+### Build Workflow Summary
+
+```
+Local development:
+  npx expo run:ios --simulator          → Build locally, fast iteration
+  npx expo start --dev-client           → Start Metro, connect to installed dev client
+
+EAS cloud builds:
+  eas build --profile development       → Dev client (install once, then use Metro)
+  eas build --profile *-preview         → QA/testing (internal distribution)
+  eas build --profile *-production      → Store release
+  eas submit --profile *-production     → Upload to App Store / Play Store
+```
+
+### Switching Between App Variants
+
+When switching between variants (e.g. from Paradym to DIDx), you must clean and rebuild the native project:
+
+```bash
+cd apps/easypid
+rm -rf ios android
+EXPO_PUBLIC_APP_TYPE=DIDX_WALLET npx expo prebuild --clean
+EXPO_PUBLIC_APP_TYPE=DIDX_WALLET npx expo run:ios --simulator
+```
+
+For EAS builds, the variant is automatically set by the profile's `EXPO_PUBLIC_APP_TYPE` env var — no manual switching needed.
+
 ## 📦 Releasing
 
-Uploading builds to Appstore Connect and the Google Play Console are automated using Github Actions and Expo Build. 
+Uploading builds to App Store Connect and the Google Play Console are automated using GitHub Actions and Expo Build.
 
 Before making a release, make sure to update the `version` in the `apps/easypid/package.json`. We generally follow semver, and so for fixes we update the patch version, for new features we update the minor version, and for large refactorings we can use the major version. However we often push user-facing changes as minor and not major, as the wallet is not interacted with by a machine, so "breaking change" is hard to define.
-To trigger a release of the Paradym Wallet, run the [Continuous Deployment](https://github.com/animo/paradym-wallet/actions/workflows/continuous-deployment.yaml) workflow. Make sure to:
+
+### Using GitHub Actions (CI/CD)
+
+To trigger a release, run the [Continuous Deployment](https://github.com/animo/paradym-wallet/actions/workflows/continuous-deployment.yaml) workflow. Make sure to:
 - Set the channel to `production`
 - The platform to `all` (unless you only want to release for iOS OR Android)
-- App to `paradym` (or to `funke` in case you want to deploy our EUDI Wallet Prototype).
+- App to `paradym`, `funke`, or `didx`
 
-This will trigger builds in Expo, and will then automatically upload the builds to Appstore Connect and Google Play. Build numbers are automatically incremented by Expo.
+This will trigger builds in Expo, and will then automatically upload the builds to App Store Connect and Google Play. Build numbers are automatically incremented by Expo.
 
-Releases are automatically published as internal release on Testflight and Google Play, allowing them to be tested.
+### Manual Release (EAS CLI)
 
-From there on you can manually create a release in the respective platforms (of which plentry documentation can be found online).
+You can also build and submit manually from the command line:
+
+```bash
+cd apps/easypid
+
+# Build production binaries
+eas build --profile didx-production --platform all
+eas build --profile paradym-production --platform all
+eas build --profile funke-production --platform all
+
+# Submit to stores (after build completes)
+eas submit --profile didx-production --platform all
+eas submit --profile paradym-production --platform all
+eas submit --profile funke-production --platform all
+```
+
+### After Submission
+
+| Platform | What happens | Next step |
+|----------|-------------|-----------|
+| **iOS** | Build appears in App Store Connect / TestFlight | Promote to external TestFlight testing or submit for App Review |
+| **Android** | Build appears on the configured Google Play test track | Promote from test track to production in Play Console |
+
+Releases are automatically published as internal releases on TestFlight and Google Play, allowing them to be tested before public release. From there you can manually create a release in the respective platforms.
 
 ## 🆕 Add new dependencies
 

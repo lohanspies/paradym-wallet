@@ -4,6 +4,12 @@ export const APP_CONFIGS = {
     DIDCOMM: false,
     CLOUD_HSM: true,
   },
+  DIDX_WALLET: {
+    EID_CARD: false,
+    AI_ANALYSIS: false,
+    DIDCOMM: true,
+    CLOUD_HSM: false,
+  },  
   PARADYM_WALLET: {
     AI_ANALYSIS: false,
     DIDCOMM: true,

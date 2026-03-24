@@ -79,7 +79,7 @@ const createBaseConfig = (appSpecific) => {
     name: `${name}${variant.name}`,
     scheme,
     slug,
-    owner: 'animo-id',
+    owner: 'didx',
     version: appSpecific.version,
     orientation: 'portrait',
     icon,
@@ -102,7 +102,7 @@ const createBaseConfig = (appSpecific) => {
       [
         'expo-splash-screen',
         {
-          backgroundColor: '#F2F4F6',
+          backgroundColor: '#F3F1F6',
           image: adaptiveIcon ?? splashIcon,
           imageWidth: 200,
           ios: {
@@ -228,4 +228,4 @@ const createBaseConfig = (appSpecific) => {
   }
 }
 
-export { createBaseConfig, variant }
+module.exports = { createBaseConfig, variant }

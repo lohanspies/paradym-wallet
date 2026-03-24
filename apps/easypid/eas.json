@@ -13,11 +13,14 @@
 			"android": {
 				"buildType": "apk"
 			},
-			"ios": {
-				"simulator": true
-			},
 			"env": {
 				"APP_VARIANT": "development"
+			}
+		},
+		"development-simulator": {
+			"extends": "development",
+			"ios": {
+				"simulator": true
 			}
 		},
 		"funke-production-local": {
@@ -88,8 +91,37 @@
 				"EXPO_PUBLIC_APP_TYPE": "PARADYM_WALLET"
 			}
 		},
+		"didx-preview": {
+			"extends": "base",
+			"distribution": "internal",
+			"android": {
+				"buildType": "apk"
+			},
+			"env": {
+				"APP_VARIANT": "preview",
+				"EXPO_PUBLIC_APP_TYPE": "DIDX_WALLET"
+			}
+		},
+		"didx-preview-simulator": {
+			"extends": "didx-preview",
+			"ios": {
+				"simulator": true
+			}
+		},
+		"didx-production": {
+			"extends": "base",
+			"autoIncrement": true,
+			"distribution": "store",
+			"android": {
+				"buildType": "app-bundle",
+				"resourceClass": "large"
+			},
+			"env": {
+				"EXPO_PUBLIC_APP_TYPE": "DIDX_WALLET"
+			}
+		},
 		"e2e-test": {
-			"extends": "paradym-preview",
+			"extends": "didx-preview",
 			"withoutCredentials": true,
 			"ios": {
 				"simulator": true
@@ -121,6 +153,15 @@
 			"android": {
 				"track": "alpha"
 			}
-		}
+		},
+		"didx-production": {
+			"ios": {
+				"companyName": "DIDx",
+				"ascAppId": "6759250270"
+			},
+			"android": {
+				"track": "alpha"
+			}
+		}		
 	}
 }

@@ -63,7 +63,7 @@ export function FunkeMenuScreen() {
   const onResetWallet = useWalletReset()
   const { withHaptics } = useHaptics()
 
-  const handleFeedback = withHaptics(() => Linking.openURL('mailto:ana@animo.id?subject=Feedback on the Wallet'))
+  const handleFeedback = withHaptics(() => Linking.openURL('mailto:lohan.spies@didx.co.za?subject=Feedback on the DIDx Wallet'))
   const handlePush = (path: string) => withHaptics(() => router.push(path))
 
   return (

@@ -10,11 +10,11 @@ export function FunkeAboutScreen() {
   const { about } = useAppCopy()
 
   const openContact = () => {
-    Linking.openURL(`mailto:ana@animo.id?subject=${about.emailHeader}`)
+    Linking.openURL(`mailto:lohan.spies@didx.co.za?subject=${about.emailHeader}`)
   }
 
   const openPrivacyPolicy = () => {
-    Linking.openURL('https://paradym.id/wallet-privacy-policy')
+    Linking.openURL('https://www.didx.co.za/DIDx%20Privacy%20Policy.pdf')
   }
 
   return (
@@ -36,7 +36,7 @@ export function FunkeAboutScreen() {
               comment: 'Intro sentence before showing support email address',
             })}{' '}
             <Paragraph fontWeight="$semiBold" color="$primary-500" onPress={openContact}>
-              ana@animo.id
+              lohan.spies@didx.co.za
             </Paragraph>
             .
           </Paragraph>
