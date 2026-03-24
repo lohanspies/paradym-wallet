@@ -105,7 +105,7 @@ export class ParadymWalletSdk<T extends AgentType = AgentType> {
   }
 
   public async reset() {
-    reset(this)
+    await reset(this)
   }
 
   /**
@@ -344,13 +344,18 @@ function useSecureUnlockState(configuration: SetupParadymWalletSdkOptions): Secu
   }
 
   if (state === 'locked') {
+    const walletKeyVersion = secureWalletKey.getWalletKeyVersion()
+    const lockedWalletId = configuration.id
+      ? `${configuration.id}-${walletKeyVersion}`
+      : `paradym-wallet-${walletKeyVersion}`
+
     return {
       state,
       isUnlocking,
       canTryUnlockingUsingBiometrics,
       reinitialize,
       reset: async () => {
-        await reset()
+        await reset(undefined, lockedWalletId)
         reinitialize()
       },
       tryUnlockingUsingBiometrics: async () => {
