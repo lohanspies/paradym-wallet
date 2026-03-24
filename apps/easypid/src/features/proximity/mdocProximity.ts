@@ -7,8 +7,11 @@ import {
   MdocService,
   useInstanceFromCredentialRecord,
 } from '@credo-ts/core'
+import { appScheme } from '@easypid/constants'
 import type { FormattedSubmission, ParadymWalletSdk } from '@paradym/wallet-sdk'
 import { PermissionsAndroid, Platform } from 'react-native'
+
+let _dataTransferInitialized = false
 
 type ShareDeviceResponseOptions = {
   paradym: ParadymWalletSdk
@@ -43,7 +46,8 @@ export const checkMdocPermissions = async () => {
 }
 
 export const getMdocQrCode = async () => {
-  const mdt = mdocDataTransfer.instance()
+  const mdt = mdocDataTransfer.instance(appScheme)
+  _dataTransferInitialized = true
   const qrData = await mdt.startQrEngagement()
   mdt.enableNfc()
   return qrData
@@ -56,7 +60,7 @@ export const getMdocQrCode = async () => {
  * Returns the device request and session transcript
  */
 export const waitForDeviceRequest = async () => {
-  const mdt = mdocDataTransfer.instance()
+  const mdt = mdocDataTransfer.instance(appScheme)
   const { deviceRequest, sessionTranscript } = await mdt.waitForDeviceRequest()
 
   // current bug on android required re-encapsulation
@@ -114,17 +118,18 @@ export const shareDeviceResponse = async (options: ShareDeviceResponseOptions) =
     },
   })
 
-  const mdt = mdocDataTransfer.instance()
+  const mdt = mdocDataTransfer.instance(appScheme)
   await mdt.sendDeviceResponse(deviceResponse)
 }
 
 export const shutdownDataTransfer = () => {
   if (isDataTransferInitialized()) {
-    const mdt = mdocDataTransfer.instance()
+    const mdt = mdocDataTransfer.instance(appScheme)
     mdt.shutdown()
+    _dataTransferInitialized = false
   }
 }
 
 export const isDataTransferInitialized = () => {
-  return mdocDataTransfer.isInitialized()
+  return _dataTransferInitialized
 }
