@@ -194,6 +194,7 @@ export class WalletServiceProviderClient implements SecureEnvironment {
 
 export const setupWalletServiceProvider = async (paradym: ParadymWalletSdk, registerWallet = false) => {
   if (CURRENT_APP_TYPE === 'PARADYM_WALLET') return
+  if (CURRENT_APP_TYPE === 'DIDX_WALLET') return
   const shouldUseCloudHsm = getShouldUseCloudHsm()
 
   paradym.logger.debug(
