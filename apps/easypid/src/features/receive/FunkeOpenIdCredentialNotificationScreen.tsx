@@ -311,6 +311,8 @@ export function FunkeCredentialNotificationScreen() {
               name={resolvedCredentialOffer.credentialDisplay.issuer.name}
               logo={resolvedCredentialOffer.credentialDisplay.issuer.logo}
               entityId={resolvedCredentialOffer.resolvedCredentialOffer.metadata.credentialIssuer.credential_issuer}
+              trustedEntities={resolvedCredentialOffer.trustedEntities}
+              trustMechanism={resolvedCredentialOffer.trustMechanism}
               onContinue={
                 resolvedCredentialOffer.flow === 'pre-auth' || resolvedCredentialOffer.flow === 'pre-auth-with-tx-code'
                   ? acquireCredentialsPreAuth

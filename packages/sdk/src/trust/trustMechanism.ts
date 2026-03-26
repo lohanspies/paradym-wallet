@@ -7,6 +7,7 @@ import {
   getTrustedEntitiesForEudiRpAuthentication,
   type TrustList,
 } from './handlers/eudiRpAuthentication'
+import { getTrustedEntitiesForOpenId4VciIssuer } from './handlers/openId4VciIssuer'
 import {
   type GetTrustedEntitiesForX509CertificateOptions,
   getTrustedEntitiesForX509Certificate,
@@ -125,5 +126,29 @@ export const getTrustedEntities = async (
       ...trustedEntities.relyingParty,
       entityId,
     },
+  }
+}
+
+/**
+ * Resolves trusted entities for an OID4VCI credential offer by matching the full
+ * credential_issuer URL against the configured trusted OID4VCI issuer entities.
+ */
+export const getTrustedEntitiesForCredentialOffer = (
+  paradym: ParadymWalletSdk,
+  credentialIssuerUrl: string
+): {
+  trustMechanism: TrustMechanism
+  issuer: { logoUri?: string; uri?: string; organizationName?: string; entityId: string }
+  trustedEntities: TrustedEntity[]
+} => {
+  const result = getTrustedEntitiesForOpenId4VciIssuer({
+    credentialIssuerUrl,
+    trustedIssuers: paradym.trustedOpenId4VciIssuers,
+  })
+
+  return {
+    trustMechanism: 'x509',
+    issuer: result.issuer,
+    trustedEntities: result.trustedEntities,
   }
 }
