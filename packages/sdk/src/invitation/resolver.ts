@@ -46,6 +46,8 @@ import { getCredentialBindingResolver } from '../openid4vc/credentialBindingReso
 import { getCredentialDisplayForOffer } from '../openid4vc/func/getCredentialDisplayForOffer'
 import { type CredentialsForProofRequest, resolveCredentialRequest } from '../openid4vc/func/resolveCredentialRequest'
 import type { ParadymWalletSdk } from '../ParadymWalletSdk'
+import type { TrustedEntity, TrustMechanism } from '../trust/trustMechanism'
+import { getTrustedEntitiesForCredentialOffer } from '../trust/trustMechanism'
 
 export type AcceptOutOfBandInvitationResult<FlowType extends 'issue' | 'verify' | 'connect'> = Promise<
   FlowType extends 'issue'
@@ -110,11 +112,16 @@ type OpenId4VciResolvedAuthRequestOauth2Redirect = Extract<
   { authorizationFlow: OpenId4VciAuthorizationFlow.Oauth2Redirect }
 >
 
+type IssuerTrust = {
+  trustedEntities: TrustedEntity[]
+  trustMechanism: TrustMechanism
+}
+
 type ResolveCredentialOfferPreAuthReturn = {
   flow: 'pre-auth'
   resolvedCredentialOffer: OpenId4VciResolvedCredentialOffer
   credentialDisplay: CredentialDisplay
-}
+} & IssuerTrust
 
 type ResolveCredentialOfferPreAuthWithTxCodeReturn = {
   flow: 'pre-auth-with-tx-code'
@@ -125,14 +132,14 @@ type ResolveCredentialOfferPreAuthWithTxCodeReturn = {
     length?: number
     input_mode?: 'numeric' | 'text'
   }
-}
+} & IssuerTrust
 
 type ResolveCredentialOfferAuthReturn = {
   flow: 'auth'
   credentialDisplay: CredentialDisplay
   resolvedCredentialOffer: OpenId4VciResolvedCredentialOffer
   resolvedAuthorizationRequest: OpenId4VciResolvedAuthRequestOauth2Redirect
-}
+} & IssuerTrust
 
 type ResolveCredentialOfferAuthPresentationDuringIssuanceReturn = {
   flow: 'auth-presentation-during-issuance'
@@ -140,7 +147,7 @@ type ResolveCredentialOfferAuthPresentationDuringIssuanceReturn = {
   resolvedCredentialOffer: OpenId4VciResolvedCredentialOffer
   resolvedAuthorizationRequest: OpenId4VciResolvedAuthRequestPresentationDuringIssuance
   credentialsForProofRequest: CredentialsForProofRequest
-}
+} & IssuerTrust
 
 export type ResolveCredentialOfferReturn =
   | ResolveCredentialOfferPreAuthReturn
@@ -167,6 +174,11 @@ export async function resolveCredentialOffer({
 
   const credentialDisplay = getCredentialDisplayForOffer(resolvedCredentialOffer)
 
+  const { trustedEntities, trustMechanism } = getTrustedEntitiesForCredentialOffer(
+    paradym,
+    resolvedCredentialOffer.metadata.credentialIssuer.credential_issuer
+  )
+
   if (preAuthGrant) {
     if (txCodeInfo) {
       return {
@@ -174,12 +186,16 @@ export async function resolveCredentialOffer({
         credentialDisplay,
         resolvedCredentialOffer,
         txCodeInfo,
+        trustedEntities,
+        trustMechanism,
       }
     }
     return {
       flow: 'pre-auth',
       credentialDisplay,
       resolvedCredentialOffer,
+      trustedEntities,
+      trustMechanism,
     }
   }
 
@@ -214,6 +230,8 @@ export async function resolveCredentialOffer({
         resolvedCredentialOffer,
         resolvedAuthorizationRequest,
         credentialsForProofRequest,
+        trustedEntities,
+        trustMechanism,
       }
     }
 
@@ -222,6 +240,8 @@ export async function resolveCredentialOffer({
       credentialDisplay,
       resolvedCredentialOffer,
       resolvedAuthorizationRequest,
+      trustedEntities,
+      trustMechanism,
     }
   }
 
