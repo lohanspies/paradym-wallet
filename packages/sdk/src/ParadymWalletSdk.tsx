@@ -51,6 +51,7 @@ import {
 import { secureWalletKey, setIsBiometricsEnabled } from './secure'
 import { KeychainError } from './secure/error/KeychainError'
 import { deleteCredential } from './storage/credentials'
+import type { TrustedOpenId4VciIssuerEntity } from './trust/handlers/openId4VciIssuer'
 import type { TrustMechanismConfiguration } from './trust/trustMechanism'
 import type { DistributedOmit } from './types'
 import { reset } from './utils/reset'
@@ -71,6 +72,12 @@ export type ParadymWalletSdkOptions = SetupAgentOptions & {
    */
   // TODO(sdk): this will get more complex, as eudi_rp_auth needs more configuration
   trustMechanisms: TrustMechanismConfiguration[]
+
+  /**
+   * Trusted OID4VCI credential issuers, matched by full credential_issuer URL.
+   * Each entry may optionally include a certificate for future signed_metadata verification.
+   */
+  trustedOpenId4VciIssuers?: TrustedOpenId4VciIssuerEntity[]
 }
 
 export type SetupParadymWalletSdkOptions = Omit<ParadymWalletSdkOptions, 'key'>
@@ -85,11 +92,13 @@ export function assertParadymSdkType<T extends AgentType>(
 
 export class ParadymWalletSdk<T extends AgentType = AgentType> {
   public trustMechanisms: TrustMechanismConfiguration[]
+  public trustedOpenId4VciIssuers: TrustedOpenId4VciIssuerEntity[]
   public readonly agent: AgentForAgentType<T>
 
   public constructor(options: ParadymWalletSdkOptions) {
     this.agent = setupAgent(options) as unknown as AgentForAgentType<T>
     this.trustMechanisms = options.trustMechanisms
+    this.trustedOpenId4VciIssuers = options.trustedOpenId4VciIssuers ?? []
   }
 
   public get isDidCommEnabled() {

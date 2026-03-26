@@ -1,4 +1,4 @@
-import { eudiTrustList, trustedX509Certificates, trustedX509Entities } from '@easypid/constants'
+import { eudiTrustList, trustedOpenId4VciIssuerEntities, trustedX509Certificates, trustedX509Entities } from '@easypid/constants'
 import type { SetupParadymWalletSdkOptions } from '@paradym/wallet-sdk'
 import { LogLevel } from '@paradym/wallet-sdk'
 
@@ -17,5 +17,6 @@ export const paradymWalletSdkOptions: SetupParadymWalletSdkOptions = {
     { trustMechanism: 'x509', trustedX509Entities },
     { trustMechanism: 'did' },
   ],
+  trustedOpenId4VciIssuers: trustedOpenId4VciIssuerEntities,
   didcommConfiguration: { label: '' },
 }

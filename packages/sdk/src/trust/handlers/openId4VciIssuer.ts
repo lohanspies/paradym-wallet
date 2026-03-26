@@ -1,5 +1,4 @@
 import type { TrustedEntity } from '../trustMechanism'
-import type { TrustedX509Entity } from './x509'
 
 // TODO(sdk): is this the best location for this type?
 export type TrustedOpenId4VciIssuerEntity = {
@@ -9,25 +8,30 @@ export type TrustedOpenId4VciIssuerEntity = {
   url: string
   demo?: boolean
   entityId: string
+  /**
+   * Optional PEM-encoded certificate to associate with this issuer.
+   * Reserved for future cryptographic verification (e.g. via signed_metadata JWT).
+   */
+  certificate?: string
 }
 
 export type GetTrustedEntitiesForOpenId4VciIssuerOptions = {
   credentialIssuerUrl: string
-  trustedX509Entities: TrustedX509Entity[]
+  trustedIssuers: TrustedOpenId4VciIssuerEntity[]
   walletTrustedEntity?: TrustedEntity
 }
 
 /**
- * Determines trust for an OID4VCI credential issuer by matching the issuer URL's
- * hostname against the configured trusted X.509 entities by entityId.
+ * Determines trust for an OID4VCI credential issuer by matching the full
+ * credential_issuer URL against the configured trusted issuer entities.
  *
- * Note: Unlike OID4VP, credential offers are not signed, so cryptographic chain
- * validation is not possible here. This is domain/URL-based matching only.
- * Signed issuer metadata (signed_metadata JWT) would enable cryptographic verification.
+ * Note: Unlike OID4VP, credential offers are unsigned, so cryptographic chain
+ * validation is not performed here. When a certificate is attached to the issuer
+ * entity it is available for future signed_metadata verification.
  */
 export const getTrustedEntitiesForOpenId4VciIssuer = ({
   credentialIssuerUrl,
-  trustedX509Entities,
+  trustedIssuers,
   walletTrustedEntity,
 }: GetTrustedEntitiesForOpenId4VciIssuerOptions) => {
   const trustedEntities: TrustedEntity[] = []
@@ -35,27 +39,22 @@ export const getTrustedEntitiesForOpenId4VciIssuer = ({
   let logoUri: string | undefined
   let entityId = credentialIssuerUrl
 
-  try {
-    const issuerHost = new URL(credentialIssuerUrl).hostname
-    const trustedEntity = trustedX509Entities.find((e) => e.entityId === issuerHost)
+  const trustedIssuer = trustedIssuers.find((e) => e.entityId === credentialIssuerUrl)
 
-    if (trustedEntity) {
-      organizationName = trustedEntity.name
-      logoUri = trustedEntity.logoUri
-      entityId = trustedEntity.entityId
+  if (trustedIssuer) {
+    organizationName = trustedIssuer.name
+    logoUri = trustedIssuer.logoUri
+    entityId = trustedIssuer.entityId
 
-      trustedEntities.push({
-        entityId: trustedEntity.entityId,
-        organizationName: trustedEntity.name,
-        logoUri: trustedEntity.logoUri,
-        uri: trustedEntity.url,
-        demo: trustedEntity.demo,
-      })
+    trustedEntities.push({
+      entityId: trustedIssuer.entityId,
+      organizationName: trustedIssuer.name,
+      logoUri: trustedIssuer.logoUri,
+      uri: trustedIssuer.url,
+      demo: trustedIssuer.demo,
+    })
 
-      if (walletTrustedEntity) trustedEntities.push(walletTrustedEntity)
-    }
-  } catch (_error) {
-    // no-op - invalid URL
+    if (walletTrustedEntity) trustedEntities.push(walletTrustedEntity)
   }
 
   return {

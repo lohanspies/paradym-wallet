@@ -130,9 +130,8 @@ export const getTrustedEntities = async (
 }
 
 /**
- * Resolves trusted entities for an OID4VCI credential offer by matching the issuer
- * URL against the configured trusted X.509 entities. Uses domain-based matching since
- * credential offers are unsigned (no x5c chain available as in OID4VP).
+ * Resolves trusted entities for an OID4VCI credential offer by matching the full
+ * credential_issuer URL against the configured trusted OID4VCI issuer entities.
  */
 export const getTrustedEntitiesForCredentialOffer = (
   paradym: ParadymWalletSdk,
@@ -142,25 +141,10 @@ export const getTrustedEntitiesForCredentialOffer = (
   issuer: { logoUri?: string; uri?: string; organizationName?: string; entityId: string }
   trustedEntities: TrustedEntity[]
 } => {
-  // Collect trustedX509Entities from all configured mechanisms that have them
-  const eudiConfig = paradym.trustMechanisms.find(
-    (tm): tm is EudiRpAuthenticationTrustMechanismConfiguration => tm.trustMechanism === 'eudi_rp_authentication'
-  )
-  const x509Config = paradym.trustMechanisms.find(
-    (tm): tm is X509TrustMechanismConfiguration => tm.trustMechanism === 'x509'
-  )
-
-  // Merge entity lists, deduplicated by entityId (x509 takes precedence over eudi entries)
-  const seen = new Set<string>()
-  const allTrustedX509Entities = [...(x509Config?.trustedX509Entities ?? []), ...(eudiConfig?.trustedX509Entities ?? [])].filter(
-    (entity) => {
-      if (seen.has(entity.entityId)) return false
-      seen.add(entity.entityId)
-      return true
-    }
-  )
-
-  const result = getTrustedEntitiesForOpenId4VciIssuer({ credentialIssuerUrl, trustedX509Entities: allTrustedX509Entities })
+  const result = getTrustedEntitiesForOpenId4VciIssuer({
+    credentialIssuerUrl,
+    trustedIssuers: paradym.trustedOpenId4VciIssuers,
+  })
 
   return {
     trustMechanism: 'x509',
