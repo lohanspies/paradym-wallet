@@ -175,7 +175,7 @@ v2Gd28RqsR4Cr5NtWuYSUAu361TJY287H2wYVgS0fw==
   },
   {
     entityId: 'blue-bank-verifier.sarb.didx.co.za',
-    name: 'SARB Blue Bank Verifier Leaf Certificate',
+    name: 'Blue Bank Verifier Leaf Certificate',
     certificate: `-----BEGIN CERTIFICATE-----
 MIIDojCCAwOgAwIBAgIRANpZUgZt0rmBKz7RFRhp6HQwCgYIKoZIzj0EAwIwVjEL
 MAkGA1UEBhMCWkExETAPBgNVBAoTCE5hdGlvbmFsMQ8wDQYDVQQLEwZGaW5TZWMx
@@ -204,7 +204,7 @@ HDPIkQVlB//R4TnY5ytOt2/vqcj+HQ==
   },
   {
     entityId: 'student-aid-verifier.sarb.didx.co.za',
-    name: 'SARB Student Aid Verifier Leaf Certificate',
+    name: 'Student Aid Verifier Leaf Certificate',
     certificate: `-----BEGIN CERTIFICATE-----
 MIIDpDCCAwWgAwIBAgIRAJpAvjaGbnAG19jCz4qo0QwwCgYIKoZIzj0EAwIwVjEL
 MAkGA1UEBhMCWkExETAPBgNVBAoTCE5hdGlvbmFsMQ8wDQYDVQQLEwZGaW5TZWMx
@@ -233,7 +233,7 @@ EO69c1loCNRAu0+iQMjfiO2iKRIEeLhj
   },
   {
     entityId: 'identity-authority-verifier.sarb.didx.co.za',
-    name: 'SARB Identity Authority Verifier Leaf Certificate',
+    name: 'Identity Authority Verifier Leaf Certificate',
     certificate: `-----BEGIN CERTIFICATE-----
 MIIDqzCCAwygAwIBAgIRAOFmxiukYPHJzzOcUL5Nf2kwCgYIKoZIzj0EAwIwVjEL
 MAkGA1UEBhMCWkExETAPBgNVBAoTCE5hdGlvbmFsMQ8wDQYDVQQLEwZGaW5TZWMx
@@ -291,7 +291,7 @@ e6CJNdc2LvoBtYYXb1Ee9xJwprWuQGC9r2tny4zXpKqeSdlBETwEtGn/16H436nH
   },
   {
     entityId: 'revenue-service-verifier.sarb.didx.co.za',
-    name: 'SARB Revenue Service Verifier Leaf Certificate',
+    name: 'Revenue Service Verifier Leaf Certificate',
     certificate: `-----BEGIN CERTIFICATE-----
 MIIDpjCCAwigAwIBAgIQclavGoLawz1q2hWdH4/EEjAKBggqhkjOPQQDAjBWMQsw
 CQYDVQQGEwJaQTERMA8GA1UEChMITmF0aW9uYWwxDzANBgNVBAsTBkZpblNlYzEj
@@ -320,7 +320,7 @@ fcUbPOSoFQJBcWfvuEu/lzV5ityCyZXtIgEPbhw596/pPGRH2GtBWThN7zcDGmqF
   },
   {
     entityId: 'contactable-sarb-verifier.sarb.didx.co.za',
-    name: 'Contactable SARB Verifier Leaf Certificate',
+    name: 'Contactable Verifier Leaf Certificate',
     certificate: `-----BEGIN CERTIFICATE-----
 MIIDpzCCAwmgAwIBAgIQAxDMxOBpXlBvci7BGNHvWTAKBggqhkjOPQQDAjBWMQsw
 CQYDVQQGEwJaQTERMA8GA1UEChMITmF0aW9uYWwxDzANBgNVBAsTBkZpblNlYzEj
@@ -407,7 +407,7 @@ y+c8R3yV9D362ALV+BMCQgEeNKjLAyFP4b5rUcdq5fAcM+ZqqP66OH3Q03FUYtTI
   },     
   {
     entityId: 'blue-bank-issuer.sarb.didx.co.za',
-    name: 'SARB Blue Bank Issuer Leaf Certificate',
+    name: 'Blue Bank Issuer Leaf Certificate',
     certificate: `-----BEGIN CERTIFICATE-----
 MIIDnzCCAwCgAwIBAgIQXNX/3ZjvFnPWinF/qb/kFzAKBggqhkjOPQQDAjBWMQsw
 CQYDVQQGEwJaQTERMA8GA1UEChMITmF0aW9uYWwxDzANBgNVBAsTBkZpblNlYzEj
@@ -436,7 +436,7 @@ keB7+LApz79GL7llrNuRg1nHUQ==
   },
   {
     entityId: 'student-aid-issuer.sarb.didx.co.za',
-    name: 'SARB Student Aid Issuer Leaf Certificate',
+    name: 'Student Aid Issuer Leaf Certificate',
     certificate: `-----BEGIN CERTIFICATE-----
 MIIDojCCAwOgAwIBAgIRAKmr0El3+kVSvXLSkt3qaeYwCgYIKoZIzj0EAwIwVjEL
 MAkGA1UEBhMCWkExETAPBgNVBAoTCE5hdGlvbmFsMQ8wDQYDVQQLEwZGaW5TZWMx
@@ -465,7 +465,7 @@ pClvUH78FjATdbqI7oiqsQOxi1hB9A==
   },
   {
     entityId: 'identity-authority-issuer.sarb.didx.co.za',
-    name: 'SARB Identity Authority Issuer Leaf Certificate',
+    name: 'Identity Authority Issuer Leaf Certificate',
     certificate: `-----BEGIN CERTIFICATE-----
 MIIDvzCCAyGgAwIBAgIRAJVyhsSYETRBgbN8aOssO0QwCgYIKoZIzj0EAwIwVjEL
 MAkGA1UEBhMCWkExETAPBgNVBAoTCE5hdGlvbmFsMQ8wDQYDVQQLEwZGaW5TZWMx
@@ -524,7 +524,7 @@ dmlBsWGM42KBfJWu7q78o5G9o/9TuorKUAx5AufYgSIDursFB3I=
   },
   {
     entityId: 'revenue-service-issuer.sarb.didx.co.za',
-    name: 'SARB Revenue Service Issuer Leaf Certificate',
+    name: 'Revenue Service Issuer Leaf Certificate',
     certificate: `-----BEGIN CERTIFICATE-----
 MIIDpTCCAwagAwIBAgIQMh5ey/Mqb13mVKHMNYUqQjAKBggqhkjOPQQDAjBWMQsw
 CQYDVQQGEwJaQTERMA8GA1UEChMITmF0aW9uYWwxDzANBgNVBAsTBkZpblNlYzEj
@@ -553,7 +553,7 @@ hsRq/RdnzL70yjXSNJ8qtcPTMa4+u4WQNA==
   },
   {
     entityId: 'contactable-sarb-issuer.sarb.didx.co.za',
-    name: 'Contactable SARB Issuer Leaf Certificate',
+    name: 'Contactable Issuer Leaf Certificate',
     certificate: `-----BEGIN CERTIFICATE-----
 MIIDpjCCAwigAwIBAgIRAICOO8DmUNGqEflNl1yLJUMwCgYIKoZIzj0EAwIwVjEL
 MAkGA1UEBhMCWkExETAPBgNVBAoTCE5hdGlvbmFsMQ8wDQYDVQQLEwZGaW5TZWMx
